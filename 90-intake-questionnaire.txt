@@ -1,0 +1,51 @@
+Plana - Project Intake Questionnaire (Human-readable)
+
+Purpose
+- This file is for humans (planners/PMs) to quickly lock down the planning context.
+- Fill this first, then update:
+  - 00-competitive-and-policy-research.md
+  - 01-product-brief.md
+  - 02-requirements.md
+  - 03-flow-and-ux.md (Mermaid)
+  - 04-data-and-policy.md
+
+How to use
+1) Answer the questions below.
+2) Convert your answers into the official docs (00~04 + shared logs).
+3) When the topic changes later, re-run this questionnaire quickly and update 00 (research) first.
+
+Section A. Topic / scope
+- What are we building? (1 sentence)
+- Who is it for? (user personas)
+- What is NOT in scope? (explicit exclusions)
+- Success criteria (what does “done” mean?)
+
+Section B. Deliverables / outputs
+- What must be exported/archived? (ZIP, docs, diagrams, etc.)
+- Where will outputs be stored? (local, remote drive, WebDAV, etc.)
+
+Section C. Data & policy (minimum)
+- Data categories: what data do we store/process?
+- Sensitivity: any PII? secrets? confidential docs?
+- Retention: default retention + deletion policy + exceptions
+- Training: are AI prompts/outputs used for training? (default should be “no training” for enterprise posture)
+- Subprocessors: any external vendors/providers? list them.
+- Permission boundary: what is the unit of access? (office/user/project/document)
+- Admin controls needed: export on/off, retention policies, audit logs, etc.
+
+Section D. Workflow / gates
+- When do we consider the flow approved? Who approves?
+- What decisions must be logged? (shared/30_decisions.md)
+- What risks must be tracked? (shared/risk.md)
+
+Section E. Competitive & policy research (for 00 doc)
+- List at least 6 comparable products/services (prefer KR first).
+- For each, capture policy patterns:
+  - Training
+  - Retention/Deletion
+  - Subprocessors
+  - Admin controls
+  - Permissioning
+
+Notes
+- Keep this file as a human scratchpad; the SSoT is the Markdown docs in product-description/.
