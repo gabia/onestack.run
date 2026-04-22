@@ -117,7 +117,7 @@ code, pre, .os-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regula
 /* ── Typography utilities ─────────────────────── */
 .os-h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.7px; margin: 0 0 10px; }
 .os-h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; margin: 40px 0 14px; padding-top: 6px; }
-.os-lede { font-size: 16px; color: hsl(var(--muted-foreground)); margin: 0 0 28px; max-width: 640px; line-height: 1.55; }
+.os-lede { font-size: 16px; color: hsl(var(--muted-foreground)); margin: 0 0 28px; line-height: 1.55; }
 .os-p { font-size: 14px; color: hsl(var(--foreground)); line-height: 1.6; max-width: 640px; }
 .os-muted { color: hsl(var(--muted-foreground)); }
 
@@ -139,7 +139,7 @@ code, pre, .os-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regula
 .os-btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
 .os-btn-primary:hover { background: hsl(var(--primary) / 0.92); }
 .os-btn-secondary { background: hsl(var(--secondary)); color: hsl(var(--secondary-foreground)); border-color: hsl(var(--border)); }
-.os-btn-secondary:hover { background: #fff; color: hsl(var(--secondary-foreground)); }
+.os-btn-secondary:hover { background: #E6F2FA; color: hsl(var(--secondary-foreground)); }
 :root.dark .os-btn-secondary:hover { background: hsl(0 0% 100% / 0.1); }
 .os-btn-ghost { background: transparent; color: hsl(var(--foreground)); }
 .os-btn-ghost:hover { background: hsl(var(--accent)); }
@@ -149,6 +149,9 @@ code, pre, .os-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regula
 .os-btn-sm { padding: 4px 8px; font-size: 12px; }
 .os-btn-lg { padding: 9px 16px; font-size: 14px; font-weight: 800; }
 .os-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px hsl(var(--ring) / 0.25); }
+.os-btn:disabled, .os-btn[disabled] { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+.os-btn-icon { padding: 6px; width: 32px; height: 32px; justify-content: center; }
+.os-btn-icon.os-btn-sm { padding: 4px; width: 26px; height: 26px; }
 
 /* ── Link Button ───────────────────────────────── */
 .os-link-btn {

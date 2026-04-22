@@ -1,7 +1,9 @@
 // All doc pages. Each exported as window.OS_PAGES[id].
 // Intentionally keep them data-driven to stay small.
+import React from 'react';
+import OS_TOKENS from './tokens.js';
 
-const T = () => window.OS_TOKENS;
+const T = () => OS_TOKENS;
 
 function Section({ title, children, id }) {
   return (
@@ -577,7 +579,7 @@ function SelectPage() {
 function TextareaPage() {
   return (
     <>
-      <h1 className="os-h1">텍스트에어리아</h1>
+      <h1 className="os-h1">텍스트에어리어</h1>
       <p className="os-lede">여러 줄 텍스트 입력. 인풋과 동일한 시각 언어를 공유합니다 — 흰 배경, 전면 테두리, Cobalt 포커스 링.</p>
 
       <Section title="상태">
@@ -1143,7 +1145,7 @@ function ContainerPage() {
   );
 }
 
-window.OS_PAGES = {
+const OS_PAGES = {
   introduction: Introduction,
   principles: Principles,
   colors: Colors,
@@ -1164,3 +1166,5 @@ window.OS_PAGES = {
   "empty-state": EmptyState,
   container: ContainerPage,
 };
+
+export default OS_PAGES;

@@ -1,7 +1,7 @@
 // OneStack design tokens — single source of truth
 // Mirrors shadcn/ui HSL variable structure so it drops into Dokploy's globals.css
 
-window.OS_TOKENS = {
+const OS_TOKENS = {
   meta: {
     name: "OneStack",
     version: "0.1.0",
@@ -145,3 +145,5 @@ window.OS_TOKENS = {
     { name: "focus", css: "0 0 0 3px hsl(204 100% 38% / 0.25)", usage: ":focus-visible ring" },
   ],
 };
+
+export default OS_TOKENS;
