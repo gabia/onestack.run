@@ -166,7 +166,7 @@ export const HandleProject = ({ projectId }: Props) => {
 				) : (
 					<Button>
 						<PlusIcon className="h-4 w-4" />
-						Create Project
+						프로젝트 생성
 					</Button>
 				)}
 			</DialogTrigger>

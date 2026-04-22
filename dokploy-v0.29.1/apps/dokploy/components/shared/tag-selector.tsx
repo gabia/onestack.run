@@ -1,4 +1,4 @@
-import { Check, ChevronsUpDown, X } from "lucide-react";
+import { ChevronsUpDown, X } from "lucide-react";
 import * as React from "react";
 import { HandleTag } from "@/components/dashboard/settings/tags/handle-tag";
 import { TagBadge } from "@/components/shared/tag-badge";
@@ -38,7 +38,7 @@ export function TagSelector({
 	tags,
 	selectedTags,
 	onTagsChange,
-	placeholder = "Select tags...",
+	placeholder = "태그 선택...",
 	className,
 	disabled = false,
 }: TagSelectorProps) {
@@ -69,7 +69,7 @@ export function TagSelector({
 						variant="outline"
 						aria-expanded={open}
 						className={cn(
-							"w-full justify-between min-h-10 h-auto bg-input",
+							"w-full justify-between min-h-10 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-ring focus-visible:shadow-[0_0_0_3px_hsl(var(--ring)/0.18)] data-[state=open]:border-ring data-[state=open]:shadow-[0_0_0_3px_hsl(var(--ring)/0.18)]",
 							disabled && "cursor-not-allowed opacity-50",
 						)}
 						disabled={disabled}
@@ -90,7 +90,7 @@ export function TagSelector({
 											disabled={disabled}
 										>
 											<X className="h-3 w-3 hover:opacity-70" />
-											<span className="sr-only">Remove {tag.name}</span>
+											<span className="sr-only">{tag.name} 제거</span>
 										</button>
 									</TagBadge>
 								))
@@ -104,14 +104,14 @@ export function TagSelector({
 				<PopoverContent className="w-full p-0" align="start">
 					<Command>
 						<CommandInput
-							placeholder="Search tags..."
+							placeholder="태그 검색..."
 							className="focus-visible:ring-0"
 						/>
 						<CommandList>
 							<CommandEmpty>
 								<div className="flex flex-col items-center gap-2 py-1">
 									<span className="text-sm text-muted-foreground">
-										No tags found.
+										태그를 찾을 수 없습니다.
 									</span>
 									<HandleTag />
 								</div>
@@ -119,7 +119,7 @@ export function TagSelector({
 							{tags.length === 0 && (
 								<div className="flex flex-col items-center gap-2 py-4">
 									<span className="text-sm text-muted-foreground">
-										No tags created yet.
+										아직 생성된 태그가 없습니다.
 									</span>
 									<HandleTag />
 								</div>
@@ -141,13 +141,6 @@ export function TagSelector({
 											<TagBadge
 												name={tag.name}
 												color={tag.color}
-												className="mr-2"
-											/>
-											<Check
-												className={cn(
-													"ml-auto h-4 w-4",
-													isSelected ? "opacity-100" : "opacity-0",
-												)}
 											/>
 										</CommandItem>
 									);

@@ -11,13 +11,25 @@ interface TagBadgeProps {
 export function TagBadge({ name, color, className, children }: TagBadgeProps) {
 	return (
 		<Badge
+			variant="outline"
 			style={{
-				backgroundColor: color ? `${color}33` : undefined,
+				backgroundColor: color ? `${color}18` : undefined,
 				color: color || undefined,
-				borderColor: color ? `${color}66` : undefined,
 			}}
-			className={cn("border", className)}
+			className={cn("gap-1.5", className)}
 		>
+			{color && (
+				<span
+					style={{
+						width: 6,
+						height: 6,
+						borderRadius: 3,
+						background: color,
+						flexShrink: 0,
+						display: "inline-block",
+					}}
+				/>
+			)}
 			{name}
 			{children}
 		</Badge>

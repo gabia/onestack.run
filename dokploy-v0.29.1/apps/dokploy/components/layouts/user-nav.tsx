@@ -46,7 +46,7 @@ export const UserNav = () => {
 						</AvatarFallback>
 					</Avatar>
 					<div className="grid flex-1 text-left text-sm leading-tight">
-						<span className="truncate font-semibold">Account</span>
+						<span className="truncate font-semibold">계정</span>
 						<span className="truncate text-xs">{data?.user?.email}</span>
 					</div>
 					<ChevronsUpDown className="ml-auto size-4" />
@@ -60,7 +60,7 @@ export const UserNav = () => {
 			>
 				<div className="flex items-center justify-between px-2 py-1.5">
 					<DropdownMenuLabel className="flex flex-col">
-						My Account
+						내 계정
 						<span className="text-xs font-normal text-muted-foreground">
 							{data?.user?.email}
 						</span>
@@ -75,7 +75,7 @@ export const UserNav = () => {
 							router.push("/dashboard/settings/profile");
 						}}
 					>
-						Profile
+						프로필
 					</DropdownMenuItem>
 					<DropdownMenuItem
 						className="cursor-pointer"
@@ -83,7 +83,7 @@ export const UserNav = () => {
 							router.push("/dashboard/home");
 						}}
 					>
-						Projects
+						프로젝트
 					</DropdownMenuItem>
 					{!isCloud ? (
 						<>
@@ -93,7 +93,7 @@ export const UserNav = () => {
 									router.push("/dashboard/monitoring");
 								}}
 							>
-								Monitoring
+								모니터링
 							</DropdownMenuItem>
 							{permissions?.traefikFiles.read && (
 								<DropdownMenuItem
@@ -126,7 +126,7 @@ export const UserNav = () => {
 									router.push("/dashboard/settings/servers");
 								}}
 							>
-								Servers
+								서버
 							</DropdownMenuItem>
 						)
 					)}
@@ -138,7 +138,7 @@ export const UserNav = () => {
 							router.push("/dashboard/settings/billing");
 						}}
 					>
-						Billing
+						결제
 					</DropdownMenuItem>
 				)}
 				<DropdownMenuSeparator />
@@ -153,7 +153,7 @@ export const UserNav = () => {
 						// });
 					}}
 				>
-					Log out
+					로그아웃
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

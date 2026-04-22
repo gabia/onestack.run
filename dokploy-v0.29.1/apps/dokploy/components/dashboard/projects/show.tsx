@@ -204,16 +204,16 @@ export const ShowProjects = () => {
 				list={[{ name: "Projects", href: "/dashboard/projects" }]}
 			/>
 			<div className="w-full">
-				<Card className="h-full bg-sidebar p-2.5 rounded-xl  ">
+				<Card className="h-full bg-sidebar rounded-lg">
 					<div className="rounded-xl bg-background shadow-md ">
 						<div className="flex justify-between gap-4 w-full items-center flex-wrap p-6">
 							<CardHeader className="p-0">
 								<CardTitle className="text-xl flex flex-row gap-2">
 									<FolderInput className="size-6 text-muted-foreground self-center" />
-									Projects
+									프로젝트
 								</CardTitle>
 								<CardDescription>
-									Create and manage your projects
+									프로젝트를 생성하고 관리하세요.
 								</CardDescription>
 							</CardHeader>
 							{permissions?.project.create && (
@@ -344,7 +344,7 @@ export const ShowProjects = () => {
 															}
 														}}
 													>
-														<Card className="group relative w-full h-full bg-transparent transition-colors hover:bg-border">
+														<Card className="group relative w-full h-full bg-transparent transition-colors hover:bg-blue-50 hover:border-blue-200 dark:hover:bg-blue-950/20 dark:hover:border-blue-900">
 															<CardHeader>
 																<CardTitle className="flex items-center justify-between gap-2 overflow-clip">
 																	<span className="flex flex-col gap-1.5 ">

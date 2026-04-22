@@ -151,26 +151,26 @@ const MENU: Menu = {
 	home: [
 		{
 			isSingle: true,
-			title: "Home",
+			title: "홈",
 			url: "/dashboard/home",
 			icon: House,
 		},
 		{
 			isSingle: true,
-			title: "Projects",
+			title: "프로젝트",
 			url: "/dashboard/projects",
 			icon: Folder,
 		},
 		{
 			isSingle: true,
-			title: "Deployments",
+			title: "배포 내역",
 			url: "/dashboard/deployments",
 			icon: Rocket,
 			isEnabled: ({ permissions }) => !!permissions?.deployment.read,
 		},
 		{
 			isSingle: true,
-			title: "Monitoring",
+			title: "모니터링",
 			url: "/dashboard/monitoring",
 			icon: BarChartHorizontalBigIcon,
 			// Only enabled in non-cloud environments and if user has monitoring.read
@@ -179,7 +179,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Schedules",
+			title: "스케줄",
 			url: "/dashboard/schedules",
 			icon: Clock,
 			// Only enabled in non-cloud environments
@@ -188,7 +188,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Traefik File System",
+			title: "Traefik 파일 시스템",
 			url: "/dashboard/traefik",
 			icon: GalleryVerticalEnd,
 			// Only enabled for users with access to Traefik files in non-cloud environments
@@ -215,7 +215,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Requests",
+			title: "요청",
 			url: "/dashboard/requests",
 			icon: Forward,
 			// Only enabled for users with access to Docker in non-cloud environments
@@ -283,7 +283,7 @@ const MENU: Menu = {
 	settings: [
 		{
 			isSingle: true,
-			title: "Web Server",
+			title: "웹 서버",
 			url: "/dashboard/settings/server",
 			icon: Activity,
 			// Only enabled for admins in non-cloud environments
@@ -292,20 +292,20 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Profile",
+			title: "프로필",
 			url: "/dashboard/settings/profile",
 			icon: User,
 		},
 		{
 			isSingle: true,
-			title: "Remote Servers",
+			title: "원격 서버",
 			url: "/dashboard/settings/servers",
 			icon: Server,
 			isEnabled: ({ permissions }) => !!permissions?.server.read,
 		},
 		{
 			isSingle: true,
-			title: "Users",
+			title: "사용자",
 			icon: Users,
 			url: "/dashboard/settings/users",
 			// Only enabled for users with member.read permission
@@ -313,14 +313,14 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Audit Logs",
+			title: "감사 로그",
 			icon: ClipboardList,
 			url: "/dashboard/settings/audit-logs",
 			isEnabled: ({ permissions }) => !!permissions?.auditLog.read,
 		},
 		{
 			isSingle: true,
-			title: "SSH Keys",
+			title: "SSH 키",
 			icon: KeyRound,
 			url: "/dashboard/settings/ssh-keys",
 			// Only enabled for users with access to SSH keys
@@ -335,7 +335,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Tags",
+			title: "태그",
 			url: "/dashboard/settings/tags",
 			icon: Tags,
 			isEnabled: ({ permissions }) => !!permissions?.tag.read,
@@ -350,14 +350,14 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Registry",
+			title: "레지스트리",
 			url: "/dashboard/settings/registry",
 			icon: Package,
 			isEnabled: ({ permissions }) => !!permissions?.registry.read,
 		},
 		{
 			isSingle: true,
-			title: "S3 Destinations",
+			title: "S3 저장소",
 			url: "/dashboard/settings/destinations",
 			icon: Database,
 			isEnabled: ({ permissions }) => !!permissions?.destination.read,
@@ -365,14 +365,14 @@ const MENU: Menu = {
 
 		{
 			isSingle: true,
-			title: "Certificates",
+			title: "인증서",
 			url: "/dashboard/settings/certificates",
 			icon: ShieldCheck,
 			isEnabled: ({ permissions }) => !!permissions?.certificate.read,
 		},
 		{
 			isSingle: true,
-			title: "Cluster",
+			title: "클러스터",
 			url: "/dashboard/settings/cluster",
 			icon: Boxes,
 			// Only enabled for admins in non-cloud environments
@@ -381,7 +381,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Notifications",
+			title: "알림",
 			url: "/dashboard/settings/notifications",
 			icon: Bell,
 			// Only enabled for users with access to notifications
@@ -389,7 +389,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Billing",
+			title: "결제",
 			url: "/dashboard/settings/billing",
 			icon: CreditCard,
 			// Only enabled for owners in cloud environments
@@ -397,7 +397,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "License",
+			title: "라이선스",
 			url: "/dashboard/settings/license",
 			icon: Key,
 			// Only enabled for owners
@@ -413,7 +413,7 @@ const MENU: Menu = {
 		},
 		{
 			isSingle: true,
-			title: "Whitelabeling",
+			title: "화이트라벨링",
 			url: "/dashboard/settings/whitelabeling",
 			icon: Palette,
 			// Only enabled for owners in non-cloud environments (enterprise)
@@ -423,12 +423,12 @@ const MENU: Menu = {
 
 	help: [
 		{
-			name: "Documentation",
+			name: "문서",
 			url: "https://docs.dokploy.com/docs/core",
 			icon: BookIcon,
 		},
 		{
-			name: "Support",
+			name: "지원",
 			url: "https://discord.gg/2tBnJ3jDJc",
 			icon: CircleHelp,
 		},
@@ -628,7 +628,7 @@ function SidebarLogo() {
 											)}
 										>
 											<p className="text-sm font-medium leading-none">
-												{activeOrganization?.name ?? "Select Organization"}
+												{activeOrganization?.name ?? "조직 선택"}
 											</p>
 										</div>
 									</div>
@@ -644,7 +644,7 @@ function SidebarLogo() {
 								sideOffset={4}
 							>
 								<DropdownMenuLabel className="text-xs text-muted-foreground shrink-0">
-									Organizations
+									조직
 								</DropdownMenuLabel>
 								<div className="overflow-y-auto overflow-x-hidden min-h-0 -mx-1 px-1">
 									{organizations?.map((org) => {
@@ -806,7 +806,7 @@ function SidebarLogo() {
 								side={"right"}
 								className="w-80"
 							>
-								<DropdownMenuLabel>Pending Invitations</DropdownMenuLabel>
+								<DropdownMenuLabel>대기 중인 초대</DropdownMenuLabel>
 								<div className="flex flex-col gap-2">
 									{invitations && invitations.length > 0 ? (
 										invitations.map((invitation) => (
@@ -827,8 +827,8 @@ function SidebarLogo() {
 													</div>
 												</DropdownMenuItem>
 												<DialogAction
-													title="Accept Invitation"
-													description="Are you sure you want to accept this invitation?"
+													title="초대 수락"
+													description="이 초대를 수락하시겠습니까?"
 													type="default"
 													onClick={async () => {
 														const { error } =
@@ -848,14 +848,14 @@ function SidebarLogo() {
 													}}
 												>
 													<Button size="sm" variant="secondary">
-														Accept Invitation
+														초대 수락
 													</Button>
 												</DialogAction>
 											</div>
 										))
 									) : (
 										<DropdownMenuItem disabled>
-											No pending invitations
+											대기 중인 초대가 없습니다
 										</DropdownMenuItem>
 									)}
 								</div>
@@ -944,7 +944,7 @@ export default function Page({ children }: Props) {
 				</SidebarHeader>
 				<SidebarContent>
 					<SidebarGroup>
-						<SidebarGroupLabel>Home</SidebarGroupLabel>
+						<SidebarGroupLabel>홈</SidebarGroupLabel>
 						<SidebarMenu>
 							{filteredHome.map((item) => {
 								const isSingle = item.isSingle !== false;
@@ -1033,7 +1033,7 @@ export default function Page({ children }: Props) {
 						</SidebarMenu>
 					</SidebarGroup>
 					<SidebarGroup>
-						<SidebarGroupLabel>Settings</SidebarGroupLabel>
+						<SidebarGroupLabel>설정</SidebarGroupLabel>
 						<SidebarMenu className="gap-1">
 							{filteredSettings.map((item) => {
 								const isSingle = item.isSingle !== false;
@@ -1122,7 +1122,7 @@ export default function Page({ children }: Props) {
 						</SidebarMenu>
 					</SidebarGroup>
 					<SidebarGroup className="group-data-[collapsible=icon]:hidden">
-						<SidebarGroupLabel>Extra</SidebarGroupLabel>
+						<SidebarGroupLabel>더보기</SidebarGroupLabel>
 						<SidebarMenu>
 							{help.map((item: ExternalLink) => (
 								<SidebarMenuItem key={item.name}>

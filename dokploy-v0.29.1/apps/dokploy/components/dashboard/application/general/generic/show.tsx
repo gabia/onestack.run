@@ -153,53 +153,53 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 						setSab(e as TabState);
 					}}
 				>
-					<div className="flex flex-row items-center justify-between w-full overflow-auto">
-						<TabsList className="flex gap-4 justify-start bg-transparent">
+					<div className="w-full overflow-x-auto">
+						<TabsList className="flex gap-0 justify-start bg-transparent w-full border-b border-border rounded-none p-0 h-auto">
 							<TabsTrigger
 								value="github"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<GithubIcon className="size-4 text-current fill-current" />
 								Github
 							</TabsTrigger>
 							<TabsTrigger
 								value="gitlab"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<GitlabIcon className="size-4 text-current fill-current" />
 								Gitlab
 							</TabsTrigger>
 							<TabsTrigger
 								value="bitbucket"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<BitbucketIcon className="size-4 text-current fill-current" />
 								Bitbucket
 							</TabsTrigger>
 							<TabsTrigger
 								value="gitea"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<GiteaIcon className="size-4 text-current fill-current" />
 								Gitea
 							</TabsTrigger>
 							<TabsTrigger
 								value="docker"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<DockerIcon className="size-5 text-current" />
 								Docker
 							</TabsTrigger>
 							<TabsTrigger
 								value="git"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<GitIcon />
 								Git
 							</TabsTrigger>
 							<TabsTrigger
 								value="drop"
-								className="rounded-none border-b-2 gap-2 border-b-transparent data-[state=active]:border-b-2 data-[state=active]:border-b-border"
+								className="rounded-none border-b-2 border-b-transparent -mb-px gap-2 px-3.5 py-2 text-sm text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
 							>
 								<UploadCloud className="size-5 text-current" />
 								Drop

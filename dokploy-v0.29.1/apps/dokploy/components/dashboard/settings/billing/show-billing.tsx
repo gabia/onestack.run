@@ -162,7 +162,7 @@ export const ShowBilling = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="bg-sidebar p-2.5 rounded-xl max-w-6xl mx-auto">
+			<Card className="bg-sidebar rounded-xl max-w-6xl mx-auto">
 				<div className="rounded-xl bg-background shadow-md">
 					<CardHeader className="flex flex-row items-start justify-between">
 						<div>

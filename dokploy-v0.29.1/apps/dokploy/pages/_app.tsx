@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
@@ -11,8 +10,6 @@ import { SearchCommand } from "@/components/dashboard/search-command";
 import { WhitelabelingProvider } from "@/components/proprietary/whitelabeling/whitelabeling-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { api } from "@/utils/api";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -31,14 +28,8 @@ const MyApp = ({
 
 	return (
 		<>
-			<style jsx global>
-				{`
-					:root {
-						--font-inter: ${inter.style.fontFamily};
-					}
-				`}
-			</style>
 			<Head>
+				<link rel="stylesheet" href="https://static.hiworks.com/asp/common/font/pretendard/variable/typography.css" />
 				<title>Dokploy</title>
 			</Head>
 			<ThemeProvider

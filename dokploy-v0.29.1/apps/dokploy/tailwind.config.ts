@@ -20,7 +20,7 @@ const config = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+				sans: ["'Pretendard Variable'", "'Pretendard'", ...defaultTheme.fontFamily.sans],
 			},
 			screens: {
 				"3xl": "1920px",
