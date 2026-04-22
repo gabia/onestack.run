@@ -22,16 +22,16 @@ export const ShowApiKeys = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar rounded-xl max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md">
-					<CardHeader className="flex flex-row gap-2 flex-wrap justify-between items-center">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="flex flex-row gap-2 flex-wrap justify-between items-center px-0 pt-0 pb-6">
 						<div>
 							<CardTitle className="text-xl flex items-center gap-2">
 								<KeyIcon className="size-5" />
-								API/CLI Keys
+								API/CLI 키
 							</CardTitle>
 							<CardDescription>
-								Generate and manage API keys to access the API/CLI
+								API/CLI에 접근하기 위한 API 키를 생성하고 관리합니다.
 							</CardDescription>
 						</div>
 						<div className="flex flex-row gap-2 max-sm:flex-wrap items-end">
@@ -48,7 +48,7 @@ export const ShowApiKeys = () => {
 							</Link>
 						</div>
 					</CardHeader>
-					<CardContent className="space-y-6">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<div className="flex flex-col gap-4">
 							{data?.user.apiKeys && data.user.apiKeys.length > 0 ? (
 								data.user.apiKeys.map((apiKey) => (

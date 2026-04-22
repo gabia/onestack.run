@@ -893,7 +893,7 @@ export default function Page({ children }: Props) {
 		refetchOnWindowFocus: false,
 	});
 
-	const includesProjects = pathname?.includes("/dashboard/project");
+	const includesProjects = pathname?.includes("/dashboard/project/");
 	const { data: isCloud } = api.settings.isCloud.useQuery();
 
 	const {
@@ -966,7 +966,7 @@ export default function Page({ children }: Props) {
 												<SidebarMenuButton
 													asChild
 													tooltip={item.title}
-													className={cn(isActive && "bg-border")}
+													isActive={isActive}
 												>
 													<Link
 														href={item.url}
@@ -1055,7 +1055,7 @@ export default function Page({ children }: Props) {
 												<SidebarMenuButton
 													asChild
 													tooltip={item.title}
-													className={cn(isActive && "bg-border")}
+													isActive={isActive}
 												>
 													<Link
 														href={item.url}

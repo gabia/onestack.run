@@ -6,29 +6,22 @@ import superjson from "superjson";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { EnterpriseFeatureGate } from "@/components/proprietary/enterprise-feature-gate";
 import { SSOSettings } from "@/components/proprietary/sso/sso-settings";
-import { Card } from "@/components/ui/card";
 import { appRouter } from "@/server/api/root";
 
 const Page = () => {
 	return (
 		<div className="w-full">
 			<div className="h-full rounded-xl max-w-5xl mx-auto flex flex-col gap-4">
-				<Card className="h-full bg-sidebar rounded-lg mx-auto w-full">
-					<div className="rounded-xl bg-background shadow-md">
-						<div className="p-6">
-							<EnterpriseFeatureGate
-								lockedProps={{
-									title: "Enterprise SSO",
-									description:
-										"Single sign-on (SSO) with OIDC and SAML is part of Dokploy Enterprise. Add a valid license to configure it.",
-									ctaLabel: "Go to License",
-								}}
-							>
-								<SSOSettings />
-							</EnterpriseFeatureGate>
-						</div>
-					</div>
-				</Card>
+				<EnterpriseFeatureGate
+					lockedProps={{
+						title: "엔터프라이즈 SSO",
+						description:
+							"OIDC 및 SAML을 이용한 단일 로그인(SSO)은 Dokploy 엔터프라이즈 기능입니다. 구성을 위해 유효한 라이선스를 추가하세요.",
+						ctaLabel: "라이선스로 이동",
+					}}
+				>
+					<SSOSettings />
+				</EnterpriseFeatureGate>
 			</div>
 		</div>
 	);

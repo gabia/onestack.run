@@ -235,19 +235,18 @@ const Redis = (
 									)}
 									{permissions?.monitoring.read && (
 										<TabsContent value="monitoring">
-											<div className="pt-2.5">
-												<div className="flex flex-col gap-4 border rounded-lg p-6">
-													{data?.serverId && isCloud ? (
-														<ContainerPaidMonitoring
-															appName={data?.appName || ""}
-															baseUrl={`${data?.serverId ? `http://${data?.server?.ipAddress}:${data?.server?.metricsConfig?.server?.port}` : "http://localhost:4500"}`}
-															token={
-																data?.server?.metricsConfig?.server?.token || ""
-															}
-														/>
-													) : (
-														<>
-															{/* {monitoring?.enabledFeatures && (
+											<div className="pt-2.5 flex flex-col gap-4">
+												{data?.serverId && isCloud ? (
+													<ContainerPaidMonitoring
+														appName={data?.appName || ""}
+														baseUrl={`${data?.serverId ? `http://${data?.server?.ipAddress}:${data?.server?.metricsConfig?.server?.port}` : "http://localhost:4500"}`}
+														token={
+															data?.server?.metricsConfig?.server?.token || ""
+														}
+													/>
+												) : (
+													<>
+														{/* {monitoring?.enabledFeatures && (
 															<div className="flex flex-row border w-fit p-4 rounded-lg items-center gap-2">
 																<Label className="text-muted-foreground">
 																	Change Monitoring
@@ -274,9 +273,8 @@ const Redis = (
 															/>
 															{/* </div> */}
 															{/* )} */}
-														</>
-													)}
-												</div>
+													</>
+												)}
 											</div>
 										</TabsContent>
 									)}

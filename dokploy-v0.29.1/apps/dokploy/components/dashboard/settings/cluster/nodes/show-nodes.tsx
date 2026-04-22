@@ -58,15 +58,15 @@ export const ShowNodes = ({ serverId }: Props) => {
 	const haveAtLeastOneRegistry = !!(registry && registry?.length > 0);
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="flex flex-row gap-2 justify-between w-full items-center flex-wrap">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="flex flex-row gap-2 justify-between w-full items-center flex-wrap px-0 pt-0 pb-6">
 						<div className="flex flex-col gap-2">
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<Boxes className="size-6 text-muted-foreground self-center" />
-								Cluster
+								클러스터
 							</CardTitle>
-							<CardDescription>Add nodes to your cluster</CardDescription>
+							<CardDescription>클러스터에 노드를 추가합니다.</CardDescription>
 						</div>
 						{haveAtLeastOneRegistry && (
 							<div className="flex flex-row gap-2">
@@ -74,7 +74,7 @@ export const ShowNodes = ({ serverId }: Props) => {
 							</div>
 						)}
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t min-h-[35vh]">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0 min-h-[35vh]">
 						{isPending ? (
 							<div className="flex items-center justify-center w-full h-[40vh]">
 								<Loader2 className="size-8 animate-spin text-muted-foreground" />

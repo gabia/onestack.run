@@ -332,6 +332,61 @@ function ButtonPage() {
   );
 }
 
+// ── Link Button ──────────────────────────────────
+function LinkButtonPage() {
+  return (
+    <>
+      <h1 className="os-h1">링크 버튼</h1>
+      <p className="os-lede">텍스트 링크처럼 보이지만 버튼 기능을 수행하거나, 인라인에서 가벼운 액션을 수행할 때 사용합니다.</p>
+
+      <Section title="변형">
+        <div className="os-block">
+          <div className="os-block-body">
+            <div className="os-row" style={{gap:32}}>
+              <button className="os-link-btn">디자인 시스템 보기</button>
+              <button className="os-link-btn os-link-btn-muted">나중에 하기</button>
+              <button className="os-link-btn os-link-btn-danger">초기화</button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="아이콘 조합">
+        <div className="os-block">
+          <div className="os-block-body">
+            <div className="os-row" style={{gap:32}}>
+              <button className="os-link-btn">
+                <span>문서 읽기</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </button>
+              <button className="os-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>이전으로</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="사용 원칙">
+        <div className="os-card">
+          <ul style={{margin:0,paddingLeft:20,lineHeight:1.8,fontSize:13,color:"hsl(var(--muted-foreground))"}}>
+            <li>페이지 내에서 위계가 낮은 보조 액션에 사용합니다.</li>
+            <li>외부 링크로 이동하거나, 모달 내에서 '취소' 등의 액션을 취할 때 적합합니다.</li>
+            <li>본문 텍스트 흐름 안에서 사용될 때는 일반 링크와 구분이 어려울 수 있으므로 주의합니다.</li>
+          </ul>
+        </div>
+      </Section>
+
+      <Section title="코드">
+        <pre className="os-code">{`<button className="os-link-btn">Link Button</button>
+<button className="os-link-btn os-link-btn-muted">Muted Action</button>
+<button className="os-link-btn os-link-btn-danger">Destructive Action</button>`}</pre>
+      </Section>
+    </>
+  );
+}
+
 // ── Input ────────────────────────────────────────
 function InputPage() {
   return (
@@ -1013,6 +1068,81 @@ function EmptyState() {
   );
 }
 
+// ── Pattern: Page Container ──────────────────────
+function ContainerPage() {
+  return (
+    <>
+      <h1 className="os-h1">패턴 · 페이지 컨테이너</h1>
+      <p className="os-lede">대부분의 관리 페이지에서 사용하는 2-레이어 컨테이너 패턴. 사이드바 배경 프레임 안에 흰색(다크: 카드) 콘텐츠 영역을 배치합니다.</p>
+
+      <Section title="미리보기">
+        <div className="os-block">
+          <div className="os-block-body" style={{padding:24}}>
+            <div style={{
+              background:"hsl(var(--sidebar-background))",
+              borderRadius:8,
+              padding:4,
+            }}>
+              <div style={{
+                background:"hsl(var(--background))",
+                borderRadius:12,
+                boxShadow:"0 1px 3px 0 rgb(0 0 0/.1),0 1px 2px -1px rgb(0 0 0/.1)",
+                padding:20,
+                minHeight:100,
+              }}>
+                <div style={{display:"flex",flexDirection:"column",gap:8}}>
+                  <div style={{height:12,width:140,background:"hsl(var(--muted))",borderRadius:4}}/>
+                  <div style={{height:8,width:200,background:"hsl(var(--muted))",borderRadius:4,opacity:.6}}/>
+                  <div style={{height:8,width:160,background:"hsl(var(--muted))",borderRadius:4,opacity:.6}}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="해부">
+        <div className="os-block">
+          <table className="os-table">
+            <thead><tr><th>레이어</th><th>클래스</th><th>역할</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style={{fontWeight:600}}>외부 프레임</td>
+                <td><code className="os-inline-code">bg-sidebar rounded-lg</code></td>
+                <td className="os-muted">사이드바와 연결되는 배경 프레임. 패딩 없음.</td>
+              </tr>
+              <tr>
+                <td style={{fontWeight:600}}>내부 콘텐츠</td>
+                <td><code className="os-inline-code">bg-background rounded-xl shadow-md</code></td>
+                <td className="os-muted">실제 콘텐츠 영역. 라이트: 흰색, 다크: 카드 배경.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      <Section title="코드">
+        <div className="os-block">
+          <div className="os-block-body" style={{
+            padding:16,
+            background:"hsl(var(--muted))",
+            fontFamily:"'JetBrains Mono',monospace",
+            fontSize:12,
+            lineHeight:1.8,
+          }}>
+            <div style={{color:"hsl(var(--muted-foreground))"}}>{"// Card: 외부 프레임"}</div>
+            <div>{"<Card className=\"h-full bg-sidebar rounded-lg\">"}</div>
+            <div style={{paddingLeft:16}}>{"<div className=\"rounded-xl bg-background shadow-md\">"}</div>
+            <div style={{paddingLeft:32,color:"hsl(var(--muted-foreground))"}}>{"// 페이지 내용"}</div>
+            <div style={{paddingLeft:16}}>{"</div>"}</div>
+            <div>{"</Card>"}</div>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}
+
 window.OS_PAGES = {
   introduction: Introduction,
   principles: Principles,
@@ -1021,6 +1151,7 @@ window.OS_PAGES = {
   spacing: SpacingPage,
   icons: Icons,
   button: ButtonPage,
+  "link-button": LinkButtonPage,
   input: InputPage,
   textarea: TextareaPage,
   select: SelectPage,
@@ -1031,4 +1162,5 @@ window.OS_PAGES = {
   table: TablePage,
   dashboard: DashboardPattern,
   "empty-state": EmptyState,
+  container: ContainerPage,
 };

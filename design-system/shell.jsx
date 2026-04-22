@@ -14,6 +14,7 @@ const PAGES = [
   ]},
   { group: "컴포넌트", items: [
     { id: "button",      label: "버튼",           d: ["M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z","M8 12h8","M12 8v8"] },
+    { id: "link-button", label: "링크 버튼",     d: ["M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6","M15 3h6v6","M10 14L21 3"] },
     { id: "input",       label: "인풋",           d: ["M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7","M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"] },
     { id: "textarea",    label: "텍스트에어리아", d: ["M21 6H3","M15 12H3","M17 18H3"] },
     { id: "select",      label: "멀티선택기",     d: ["M9 11l3 3L22 4","M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"] },
@@ -26,6 +27,7 @@ const PAGES = [
   { group: "패턴", items: [
     { id: "dashboard",   label: "대시보드",       d: ["M3 3h7v9H3z","M14 3h7v5h-7z","M14 12h7v9h-7z","M3 16h7v5H3z"] },
     { id: "empty-state", label: "빈 상태",        d: ["M22 12h-6l-2 3H10l-2-3H2","M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"] },
+    { id: "container",   label: "페이지 컨테이너", d: ["M3 3h18v18H3z","M7 7h10v10H7z"] },
   ]},
 ];
 

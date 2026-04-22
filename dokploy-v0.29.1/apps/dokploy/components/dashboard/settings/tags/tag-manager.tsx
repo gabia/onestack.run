@@ -22,18 +22,18 @@ export const TagManager = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar rounded-xl max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md">
-					<CardHeader>
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<TagIcon className="size-6 text-muted-foreground self-center" />
-							Tags
+							태그
 						</CardTitle>
 						<CardDescription>
-							Create and manage tags to organize your projects
+							프로젝트를 정리하기 위한 태그를 생성하고 관리합니다
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
 								<span>Loading...</span>

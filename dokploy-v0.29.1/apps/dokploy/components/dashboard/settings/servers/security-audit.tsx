@@ -30,17 +30,17 @@ export const SecurityAudit = ({ serverId }: Props) => {
 		<CardContent className="p-0">
 			<div className="flex flex-col gap-4">
 				<Card className="bg-background">
-					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2">
+					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2 pb-6">
 						<div className="flex flex-row gap-2 justify-between w-full  max-sm:flex-col">
 							<div className="flex flex-col gap-1">
 								<div className="flex items-center gap-2">
 									<LockKeyhole className="size-5" />
 									<CardTitle className="text-xl">
-										Setup Security Suggestions
+										보안 제안 설정
 									</CardTitle>
 								</div>
 								<CardDescription>
-									Check the security suggestions
+									보안 제안을 확인합니다
 								</CardDescription>
 							</div>
 							<Button
@@ -64,7 +64,7 @@ export const SecurityAudit = ({ serverId }: Props) => {
 						</div>
 					</CardHeader>
 
-					<CardContent className="flex flex-col gap-4">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<AlertBlock type="info" className="w-full">
 							Ubuntu/Debian OS support is currently supported (Experimental)
 						</AlertBlock>

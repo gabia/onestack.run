@@ -149,27 +149,27 @@ export const ProfileForm = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="flex flex-row gap-2 flex-wrap justify-between items-center">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="flex flex-row gap-2 flex-wrap justify-between items-center px-0 pt-0 pb-6">
 						<div>
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<User className="size-6 text-muted-foreground self-center" />
-								Account
+								계정
 							</CardTitle>
 							<CardDescription>
-								Change the details of your profile here.
+								여기에서 프로필 세부 정보를 변경하세요.
 							</CardDescription>
 						</div>
 
 						{!data?.user.twoFactorEnabled ? <Enable2FA /> : <Configure2FA />}
 					</CardHeader>
 
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isError && <AlertBlock type="error">{error?.message}</AlertBlock>}
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[35vh]">
-								<span>Loading...</span>
+								<span>로딩 중...</span>
 								<Loader2 className="animate-spin size-4" />
 							</div>
 						) : (
@@ -177,7 +177,7 @@ export const ProfileForm = () => {
 								<Form {...form}>
 									<form
 										onSubmit={form.handleSubmit(onSubmit)}
-										className="grid gap-4"
+										className="grid gap-6"
 									>
 										<div className="space-y-4">
 											<FormField

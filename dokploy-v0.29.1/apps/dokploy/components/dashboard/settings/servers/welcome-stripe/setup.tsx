@@ -70,7 +70,7 @@ export const Setup = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<Card className="bg-background">
-				<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2">
+				<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2 pb-6">
 					<div className="flex flex-col gap-2 w-full">
 						<Label>Select the server and click on setup server</Label>
 						<Select onValueChange={setServerId} defaultValue={serverId}>
@@ -91,14 +91,14 @@ export const Setup = () => {
 					</div>
 					<div className="flex flex-row gap-2 justify-between w-full max-sm:flex-col">
 						<div className="flex flex-col gap-1">
-							<CardTitle className="text-xl">Setup Server</CardTitle>
+							<CardTitle className="text-xl">서버 설정</CardTitle>
 							<CardDescription>
-								To setup a server, please click on the button below.
+								서버를 설정하려면 아래 버튼을 클릭하세요.
 							</CardDescription>
 						</div>
 					</div>
 				</CardHeader>
-				<CardContent className="flex flex-col gap-4 min-h-[25vh] items-center">
+				<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 					<div className="flex flex-col gap-4 items-center h-full max-w-xl mx-auto min-h-[25vh] justify-center">
 						<span className="text-sm text-muted-foreground text-center">
 							When your server is ready, you can click on the button below, to

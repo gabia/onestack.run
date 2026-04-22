@@ -184,7 +184,7 @@ export const ContainerPaidMonitoring = ({ appName, baseUrl, token }: Props) => {
 
 			{/* Stats Cards */}
 			<div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-				<Card className="p-6 bg-transparent">
+				<Card className="rounded-xl p-5 bg-transparent">
 					<div className="flex items-center gap-2">
 						<Cpu className="h-4 w-4 text-muted-foreground" />
 						<h3 className="text-sm font-medium">CPU Usage</h3>
@@ -192,7 +192,7 @@ export const ContainerPaidMonitoring = ({ appName, baseUrl, token }: Props) => {
 					<p className="mt-2 text-2xl font-bold">{metrics.CPU}%</p>
 				</Card>
 
-				<Card className="p-6 bg-transparent">
+				<Card className="rounded-xl p-5 bg-transparent">
 					<div className="flex items-center gap-2">
 						<MemoryStick className="h-4 w-4 text-muted-foreground" />
 						<h3 className="text-sm font-medium">Memory Usage</h3>
@@ -206,7 +206,7 @@ export const ContainerPaidMonitoring = ({ appName, baseUrl, token }: Props) => {
 					</p>
 				</Card>
 
-				<Card className="p-6 bg-transparent">
+				<Card className="rounded-xl p-5 bg-transparent">
 					<div className="flex items-center gap-2">
 						<Network className="h-4 w-4 text-muted-foreground" />
 						<h3 className="text-sm font-medium">Network I/O</h3>
@@ -217,7 +217,7 @@ export const ContainerPaidMonitoring = ({ appName, baseUrl, token }: Props) => {
 					</p>
 				</Card>
 
-				<Card className="p-6 bg-transparent">
+				<Card className="rounded-xl p-5 bg-transparent">
 					<div className="flex items-center gap-2">
 						<HardDrive className="h-4 w-4 text-muted-foreground" />
 						<h3 className="text-sm font-medium">Block I/O</h3>
@@ -230,7 +230,7 @@ export const ContainerPaidMonitoring = ({ appName, baseUrl, token }: Props) => {
 			</div>
 
 			{/* Container Information */}
-			<Card className="p-6 bg-transparent">
+			<Card className="rounded-xl p-5 bg-transparent">
 				<h3 className="text-lg font-medium mb-4">Container Information</h3>
 				<div className="grid gap-4 md:grid-cols-2">
 					<div>

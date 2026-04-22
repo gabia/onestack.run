@@ -1622,7 +1622,7 @@ const EnvironmentPage = (
 																href={`/dashboard/project/${projectId}/environment/${environmentId}/services/${service.type}/${service.id}`}
 																className="block"
 															>
-																<Card className="flex flex-col group relative cursor-pointer bg-transparent transition-colors hover:bg-border">
+																<Card className="flex flex-col group relative cursor-pointer bg-transparent transition-colors hover:bg-blue-50 hover:border-blue-200 dark:hover:bg-blue-950/20 dark:hover:border-blue-900">
 																	{service.serverId && (
 																		<div className="absolute -left-1 -top-2">
 																			<ServerIcon className="size-4 text-muted-foreground" />

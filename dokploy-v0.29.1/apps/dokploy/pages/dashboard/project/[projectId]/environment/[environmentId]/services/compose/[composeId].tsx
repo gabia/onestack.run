@@ -317,21 +317,20 @@ const Service = (
 
 									{permissions?.monitoring.read && (
 										<TabsContent value="monitoring">
-											<div className="pt-2.5">
-												<div className="flex flex-col border rounded-lg ">
-													{data?.serverId && isCloud ? (
-														<ComposePaidMonitoring
-															serverId={data?.serverId || ""}
-															baseUrl={`${data?.serverId ? `http://${data?.server?.ipAddress}:${data?.server?.metricsConfig?.server?.port}` : "http://localhost:4500"}`}
-															appName={data?.appName || ""}
-															token={
-																data?.server?.metricsConfig?.server?.token || ""
-															}
-															appType={data?.composeType || "docker-compose"}
-														/>
-													) : (
-														<>
-															{/* {monitoring?.enabledFeatures &&
+											<div className="pt-2.5 flex flex-col gap-4">
+												{data?.serverId && isCloud ? (
+													<ComposePaidMonitoring
+														serverId={data?.serverId || ""}
+														baseUrl={`${data?.serverId ? `http://${data?.server?.ipAddress}:${data?.server?.metricsConfig?.server?.port}` : "http://localhost:4500"}`}
+														appName={data?.appName || ""}
+														token={
+															data?.server?.metricsConfig?.server?.token || ""
+														}
+														appType={data?.composeType || "docker-compose"}
+													/>
+												) : (
+													<>
+														{/* {monitoring?.enabledFeatures &&
 															isCloud &&
 															data?.serverId && (
 																<div className="flex flex-row border w-fit p-4 rounded-lg items-center gap-2 m-4">
@@ -355,17 +354,16 @@ const Service = (
 																appType={data?.composeType || "docker-compose"}
 															/>
 														) : ( */}
-															{/* <div> */}
-															<ComposeFreeMonitoring
-																serverId={data?.serverId || ""}
-																appName={data?.appName || ""}
-																appType={data?.composeType || "docker-compose"}
-															/>
-															{/* </div> */}
-															{/* )} */}
-														</>
-													)}
-												</div>
+														{/* <div> */}
+														<ComposeFreeMonitoring
+															serverId={data?.serverId || ""}
+															appName={data?.appName || ""}
+															appType={data?.composeType || "docker-compose"}
+														/>
+														{/* </div> */}
+														{/* )} */}
+													</>
+												)}
 											</div>
 										</TabsContent>
 									)}
@@ -391,14 +389,12 @@ const Service = (
 
 									{permissions?.deployment.read && (
 										<TabsContent value="deployments" className="w-full pt-2.5">
-											<div className="flex flex-col gap-4 border rounded-lg">
-												<ShowDeployments
-													id={composeId}
-													type="compose"
-													serverId={data?.serverId || ""}
-													refreshToken={data?.refreshToken || ""}
-												/>
-											</div>
+											<ShowDeployments
+												id={composeId}
+												type="compose"
+												serverId={data?.serverId || ""}
+												refreshToken={data?.refreshToken || ""}
+											/>
 										</TabsContent>
 									)}
 

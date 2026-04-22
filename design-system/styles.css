@@ -66,7 +66,7 @@ code, pre, .os-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regula
 }
 .os-nav-item:hover { background: hsl(var(--sidebar-accent)); color: hsl(var(--foreground)); }
 .os-nav-item:hover svg { opacity: 1; }
-.os-nav-item.active { background: hsl(var(--sidebar-accent)); color: hsl(var(--foreground)); font-weight: 500; }
+.os-nav-item.active { background: #E6F2FA; color: hsl(204 100% 25%); font-weight: 500; }
 .os-nav-item.active svg { opacity: 1; }
 
 .os-sidebar-footer {
@@ -149,6 +149,44 @@ code, pre, .os-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regula
 .os-btn-sm { padding: 4px 8px; font-size: 12px; }
 .os-btn-lg { padding: 9px 16px; font-size: 14px; font-weight: 800; }
 .os-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px hsl(var(--ring) / 0.25); }
+
+/* ── Link Button ───────────────────────────────── */
+.os-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: hsl(var(--primary));
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: color .12s;
+  font-family: inherit;
+}
+
+.os-link-btn:hover {
+  color: hsl(var(--primary) / 0.8);
+  text-decoration: underline;
+}
+
+.os-link-btn-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.os-link-btn-muted:hover {
+  color: hsl(var(--foreground));
+}
+
+.os-link-btn-danger {
+  color: hsl(var(--destructive));
+}
+
+.os-link-btn-danger:hover {
+  color: hsl(var(--destructive) / 0.8);
+}
 
 /* ── Inputs ───────────────────────────────────── */
 .os-input {

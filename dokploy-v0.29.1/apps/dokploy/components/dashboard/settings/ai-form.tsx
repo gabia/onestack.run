@@ -20,22 +20,22 @@ export const AiForm = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="flex flex-row gap-2 justify-between">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="flex flex-row gap-2 justify-between px-0 pt-0 pb-6">
 						<div>
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<BotIcon className="size-6 text-muted-foreground self-center" />
-								AI Settings
+								AI 설정
 							</CardTitle>
-							<CardDescription>Manage your AI configurations</CardDescription>
+							<CardDescription>AI 구성을 관리합니다.</CardDescription>
 						</div>
 						{aiConfigs && aiConfigs?.length > 0 && <HandleAi />}
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
-								<span>Loading...</span>
+								<span>로딩 중...</span>
 								<Loader2 className="animate-spin size-4" />
 							</div>
 						) : (
@@ -44,7 +44,7 @@ export const AiForm = () => {
 									<div className="flex flex-col items-center gap-3  min-h-[25vh] justify-center">
 										<BotIcon className="size-8 self-center text-muted-foreground" />
 										<span className="text-base text-muted-foreground text-center">
-											You don't have any AI configurations
+											AI 구성이 없습니다
 										</span>
 										<HandleAi />
 									</div>
@@ -65,19 +65,19 @@ export const AiForm = () => {
 													<div className="flex justify-between items-center">
 														<HandleAi aiId={config.aiId} />
 														<DialogAction
-															title="Delete AI"
-															description="Are you sure you want to delete this AI?"
+															title="AI 삭제"
+															description="이 AI 구성을 정말로 삭제하시겠습니까?"
 															type="destructive"
 															onClick={async () => {
 																await mutateAsync({
 																	aiId: config.aiId,
 																})
 																	.then(() => {
-																		toast.success("AI deleted successfully");
+																		toast.success("AI가 성공적으로 삭제되었습니다");
 																		refetch();
 																	})
 																	.catch(() => {
-																		toast.error("Error deleting AI");
+																		toast.error("AI 삭제 중 오류가 발생했습니다");
 																	});
 															}}
 														>

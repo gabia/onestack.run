@@ -64,18 +64,18 @@ export const ShowGitProviders = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar rounded-xl max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<GitBranch className="size-6 text-muted-foreground self-center" />
-							Git Providers
+							Git 제공업체
 						</CardTitle>
 						<CardDescription>
-							Connect your Git provider for authentication.
+							인증을 위해 Git 제공업체를 연결하세요.
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
 								<span>Loading...</span>

@@ -5,20 +5,13 @@ import type { ReactElement } from "react";
 import superjson from "superjson";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { LicenseKeySettings } from "@/components/proprietary/license-keys/license-key";
-import { Card } from "@/components/ui/card";
 import { appRouter } from "@/server/api/root";
 
 const Page = () => {
 	return (
 		<div className="w-full">
 			<div className="h-full rounded-xl max-w-5xl mx-auto flex flex-col gap-4">
-				<Card className="h-full bg-sidebar rounded-lg mx-auto w-full">
-					<div className="rounded-xl bg-background shadow-md">
-						<div className="p-6">
-							<LicenseKeySettings />
-						</div>
-					</div>
-				</Card>
+				<LicenseKeySettings />
 			</div>
 		</div>
 	);
@@ -27,7 +20,7 @@ const Page = () => {
 export default Page;
 
 Page.getLayout = (page: ReactElement) => {
-	return <DashboardLayout metaName="License">{page}</DashboardLayout>;
+	return <DashboardLayout metaName="라이선스">{page}</DashboardLayout>;
 };
 
 export async function getServerSideProps(

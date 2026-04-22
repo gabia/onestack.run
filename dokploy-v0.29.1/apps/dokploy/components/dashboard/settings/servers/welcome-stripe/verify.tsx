@@ -40,7 +40,7 @@ export const Verify = () => {
 		<CardContent className="p-0">
 			<div className="flex flex-col gap-4">
 				<Card className="bg-background">
-					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2">
+					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2 pb-6">
 						<div className="flex flex-col gap-2 w-full">
 							<Label>Select a server</Label>
 							<Select onValueChange={setServerId} defaultValue={serverId}>
@@ -63,10 +63,10 @@ export const Verify = () => {
 							<div className="flex flex-col gap-1">
 								<div className="flex items-center gap-2">
 									<PcCase className="size-5" />
-									<CardTitle className="text-xl">Setup Validation</CardTitle>
+									<CardTitle className="text-xl">설정 검증</CardTitle>
 								</div>
 								<CardDescription>
-									Check if your server is ready for deployment
+									서버가 배포 준비가 되었는지 확인합니다
 								</CardDescription>
 							</div>
 							<Button
@@ -90,7 +90,7 @@ export const Verify = () => {
 						</div>
 					</CardHeader>
 
-					<CardContent className="flex flex-col gap-4 min-h-[25vh]">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex items-center justify-center text-muted-foreground py-4">
 								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
