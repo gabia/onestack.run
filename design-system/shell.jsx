@@ -7,6 +7,7 @@ import OS_PAGES from './src/pages/index.jsx';
 const PAGES = [
   { group: "시작하기", items: [
     { id: "introduction", label: "소개",         d: ["M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z","M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 0 3-3h7z"] },
+    { id: "brand",        label: "브랜드",        d: ["M12 2L2 7l10 5 10-5-10-5z","M2 17l10 5 10-5","M2 12l10 5 10-5"] },
     { id: "principles",  label: "원칙",          d: ["M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"] },
   ]},
   { group: "기초", items: [
@@ -109,12 +110,20 @@ function Shell() {
   return (
     <div className="os-root">
       <aside className="os-sidebar">
-        <div className="os-brand">
-          <div className="os-logo">◆</div>
-          <div>
-            <div className="os-brand-name">OneStack</div>
-            <div className="os-brand-tag">디자인 시스템 · v0.1</div>
-          </div>
+        <div className="os-brand" style={{gap: 6}}>
+          <svg width="28" height="28" viewBox="75 85 150 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M150 85L225 135L150 185L75 135L150 85Z" fill="hsl(var(--foreground))"/>
+            <path d="M75 148L150 198L225 148V158L150 208L75 158V148Z" fill="hsl(var(--foreground))"/>
+            <path d="M75 171L150 221L225 171V181L150 231L75 181V171Z" fill="hsl(var(--foreground))"/>
+          </svg>
+          <span style={{
+            fontFamily: "'Noto Sans', sans-serif",
+            fontWeight: 800,
+            fontSize: 16,
+            letterSpacing: '-0.05em',
+            lineHeight: 1,
+            color: 'hsl(var(--foreground))',
+          }}>Onestack</span>
         </div>
 
         <div className="os-search">

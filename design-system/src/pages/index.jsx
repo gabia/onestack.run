@@ -1,4 +1,5 @@
 import Introduction from './Introduction.jsx';
+import Brand from './Brand.jsx';
 import Principles from './Principles.jsx';
 import Colors from './Colors.jsx';
 import Typography from './Typography.jsx';
@@ -20,6 +21,7 @@ import ContainerPage from './Container.jsx';
 
 const OS_PAGES = {
   introduction: Introduction,
+  brand: Brand,
   principles: Principles,
   colors: Colors,
   typography: Typography,
