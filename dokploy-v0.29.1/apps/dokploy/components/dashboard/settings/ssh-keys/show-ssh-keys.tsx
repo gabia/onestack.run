@@ -21,19 +21,19 @@ export const ShowDestinations = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<KeyRound className="size-6 text-muted-foreground self-center" />
-							SSH Keys
+							SSH 키
 						</CardTitle>
 						<CardDescription>
-							Create and manage SSH Keys, you can use them to access your
-							servers, git private repositories, and more.
+							SSH 키를 생성하고 관리합니다. 서버 접속, Git 프라이빗 저장소 접근 등에
+							사용할 수 있습니다.
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
 								<span>Loading...</span>

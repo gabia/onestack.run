@@ -1,5 +1,12 @@
-import { Clock, Cpu, HardDrive, Loader2, MemoryStick } from "lucide-react";
+import { Activity, Clock, Cpu, HardDrive, Loader2, MemoryStick } from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import {
 	Select,
 	SelectContent,
@@ -14,21 +21,21 @@ import { MemoryChart } from "./memory-chart";
 import { NetworkChart } from "./network-chart";
 
 const REFRESH_INTERVALS = {
-	"5000": "5 Seconds",
-	"10000": "10 Seconds",
-	"20000": "20 Seconds",
-	"30000": "30 Seconds",
+	"5000": "5초",
+	"10000": "10초",
+	"20000": "20초",
+	"30000": "30초",
 } as const;
 
 const DATA_POINTS_OPTIONS = {
-	"50": "50 points",
-	"200": "200 points",
-	"500": "500 points",
-	"800": "800 points",
-	"1200": "1200 points",
-	"1600": "1600 points",
-	"2000": "2000 points",
-	all: "All points",
+	"50": "50개 포인트",
+	"200": "200개 포인트",
+	"500": "500개 포인트",
+	"800": "800개 포인트",
+	"1200": "1200개 포인트",
+	"1600": "1600개 포인트",
+	"2000": "2000개 포인트",
+	all: "전체 포인트",
 } as const;
 
 interface SystemMetrics {
@@ -120,7 +127,7 @@ export const ShowPaidMonitoring = ({
 		const hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
 		const minutes = Math.floor((seconds % (60 * 60)) / 60);
 
-		return `${days}d ${hours}h ${minutes}m`;
+		return `${days}일 ${hours}시간 ${minutes}분`;
 	};
 
 	if (isLoading) {
@@ -136,12 +143,12 @@ export const ShowPaidMonitoring = ({
 			<div className="flex min-h-[55vh] w-full items-center justify-center p-4">
 				<div className="max-w-xl text-center">
 					<p className="mb-2 text-base font-medium leading-none text-muted-foreground">
-						Error fetching metrics{" "}
+						메트릭을 가져오는 중 오류가 발생했습니다
 					</p>
 					<p className="whitespace-pre-line text-sm text-destructive">
 						{queryError instanceof Error
 							? queryError.message
-							: "Failed to fetch metrics, Please check your monitoring Instance is Configured correctly."}
+							: "메트릭을 가져오지 못했습니다. 모니터링 인스턴스가 올바르게 구성되었는지 확인하십시오."}
 					</p>
 					<p className="text-sm text-muted-foreground">URL: {BASE_URL}</p>
 				</div>
@@ -150,126 +157,134 @@ export const ShowPaidMonitoring = ({
 	}
 
 	return (
-		<div className="space-y-4 pt-5 pb-10 w-full md:px-4">
-			<div className="flex items-center justify-between flex-wrap	 gap-2">
-				<h2 className="text-2xl font-bold tracking-tight">System Monitoring</h2>
-				<div className="flex items-center gap-4 flex-wrap">
-					<div>
-						<span className="text-sm text-muted-foreground">Data points:</span>
-						<Select
-							value={dataPoints}
-							onValueChange={(value: keyof typeof DATA_POINTS_OPTIONS) =>
-								setDataPoints(value)
-							}
-						>
-							<SelectTrigger className="w-[180px]">
-								<SelectValue placeholder="Select points" />
-							</SelectTrigger>
-							<SelectContent>
-								{Object.entries(DATA_POINTS_OPTIONS).map(([value, label]) => (
-									<SelectItem key={value} value={value}>
-										{label}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
+		<Card className="h-full bg-sidebar rounded-lg w-full">
+			<div className="rounded-xl bg-background shadow-md p-6">
+				<CardHeader className="flex flex-row justify-between gap-4 flex-wrap px-0 pt-0 pb-6">
+					<div className="flex flex-col gap-1">
+						<CardTitle className="text-xl flex flex-row gap-2">
+							<Activity className="size-6 text-muted-foreground self-center" />
+							시스템 모니터링
+						</CardTitle>
+						<CardDescription>서버의 리소스 사용량과 시스템 정보를 실시간으로 확인합니다.</CardDescription>
+					</div>
+					<div className="flex items-center gap-4 flex-wrap">
+						<div className="flex flex-col gap-1">
+							<span className="text-xs text-muted-foreground font-medium">데이터 포인트</span>
+							<Select
+								value={dataPoints}
+								onValueChange={(value: keyof typeof DATA_POINTS_OPTIONS) =>
+									setDataPoints(value)
+								}
+							>
+								<SelectTrigger className="w-[140px] h-9">
+									<SelectValue placeholder="포인트 선택" />
+								</SelectTrigger>
+								<SelectContent>
+									{Object.entries(DATA_POINTS_OPTIONS).map(([value, label]) => (
+										<SelectItem key={value} value={value}>
+											{label}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
+
+						<div className="flex flex-col gap-1">
+							<span className="text-xs text-muted-foreground font-medium">새로고침 간격</span>
+							<Select
+								value={refreshInterval}
+								onValueChange={(value: keyof typeof REFRESH_INTERVALS) =>
+									setRefreshInterval(value)
+								}
+							>
+								<SelectTrigger className="w-[140px] h-9">
+									<SelectValue placeholder="간격 선택" />
+								</SelectTrigger>
+								<SelectContent>
+									{Object.entries(REFRESH_INTERVALS).map(([value, label]) => (
+										<SelectItem key={value} value={value}>
+											{label}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
+					</div>
+				</CardHeader>
+				<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
+					{/* Stats Cards */}
+					<div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+						<Card className="rounded-xl border bg-sidebar/40 shadow-sm p-4">
+							<div className="flex items-center gap-2">
+								<Clock className="h-4 w-4 text-muted-foreground" />
+								<h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">업타임</h3>
+							</div>
+							<p className="mt-2 text-xl font-bold tracking-tight">
+								{formatUptime(metrics.uptime || 0)}
+							</p>
+						</Card>
+
+						<Card className="rounded-xl border bg-sidebar/40 shadow-sm p-4">
+							<div className="flex items-center gap-2">
+								<Cpu className="h-4 w-4 text-muted-foreground" />
+								<h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">CPU 사용률</h3>
+							</div>
+							<p className="mt-2 text-xl font-bold tracking-tight">{metrics.cpu}%</p>
+						</Card>
+
+						<Card className="rounded-xl border bg-sidebar/40 shadow-sm p-4">
+							<div className="flex items-center gap-2">
+								<MemoryStick className="h-4 w-4 text-muted-foreground" />
+								<h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">메모리 사용률</h3>
+							</div>
+							<p className="mt-2 text-xl font-bold tracking-tight">
+								{metrics.memUsedGB} GB / {metrics.memTotal} GB
+							</p>
+						</Card>
+
+						<Card className="rounded-xl border bg-sidebar/40 shadow-sm p-4">
+							<div className="flex items-center gap-2">
+								<HardDrive className="h-4 w-4 text-muted-foreground" />
+								<h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">디스크 사용률</h3>
+							</div>
+							<p className="mt-2 text-xl font-bold tracking-tight">{metrics.diskUsed}%</p>
+						</Card>
 					</div>
 
-					<div>
-						<span className="text-sm text-muted-foreground">
-							Refresh interval:
-						</span>
-						<Select
-							value={refreshInterval}
-							onValueChange={(value: keyof typeof REFRESH_INTERVALS) =>
-								setRefreshInterval(value)
-							}
-						>
-							<SelectTrigger className="w-[180px]">
-								<SelectValue placeholder="Select interval" />
-							</SelectTrigger>
-							<SelectContent>
-								{Object.entries(REFRESH_INTERVALS).map(([value, label]) => (
-									<SelectItem key={value} value={value}>
-										{label}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
+					{/* System Information */}
+					<Card className="rounded-xl border bg-sidebar/40 shadow-sm p-5">
+						<h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
+							<Activity className="size-4 text-primary" />
+							시스템 정보
+						</h3>
+						<div className="grid gap-6 md:grid-cols-2">
+							<div className="space-y-1">
+								<h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">프로세서 (CPU)</h4>
+								<p className="text-sm font-medium">{metrics.cpuModel}</p>
+								<p className="text-xs text-muted-foreground">
+									{metrics.cpuPhysicalCores} 물리 코어 ({metrics.cpuCores}{" "}
+									스레드) @ {metrics.cpuSpeed}GHz
+								</p>
+							</div>
+							<div className="space-y-1">
+								<h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">운영체제</h4>
+								<p className="text-sm font-medium">{metrics.distro}</p>
+								<p className="text-xs text-muted-foreground">
+									커널: {metrics.kernel} ({metrics.arch})
+								</p>
+							</div>
+						</div>
+					</Card>
+
+					{/* Charts Grid */}
+					<div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
+						<CPUChart data={historicalData} />
+						<MemoryChart data={historicalData} />
+						<DiskChart data={metrics} />
+						<NetworkChart data={historicalData} />
 					</div>
-				</div>
+				</CardContent>
 			</div>
-
-			{/* Stats Cards */}
-			<div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-				<div className="rounded-lg border text-card-foreground shadow-sm p-6">
-					<div className="flex items-center gap-2">
-						<Clock className="h-4 w-4 text-muted-foreground" />
-						<h3 className="text-sm font-medium">Uptime</h3>
-					</div>
-					<p className="mt-2 text-2xl font-bold">
-						{formatUptime(metrics.uptime || 0)}
-					</p>
-				</div>
-
-				<div className="rounded-lg border text-card-foreground shadow-sm p-6">
-					<div className="flex items-center gap-2">
-						<Cpu className="h-4 w-4 text-muted-foreground" />
-						<h3 className="text-sm font-medium">CPU Usage</h3>
-					</div>
-					<p className="mt-2 text-2xl font-bold">{metrics.cpu}%</p>
-				</div>
-
-				<div className="rounded-lg border text-card-foreground bg-transparent shadow-sm p-6">
-					<div className="flex items-center gap-2">
-						<MemoryStick className="h-4 w-4 text-muted-foreground" />
-						<h3 className="text-sm font-medium">Memory Usage</h3>
-					</div>
-					<p className="mt-2 text-2xl font-bold">
-						{metrics.memUsedGB} GB / {metrics.memTotal} GB
-					</p>
-				</div>
-
-				<div className="rounded-lg border text-card-foreground shadow-sm p-6">
-					<div className="flex items-center gap-2">
-						<HardDrive className="h-4 w-4 text-muted-foreground" />
-						<h3 className="text-sm font-medium">Disk Usage</h3>
-					</div>
-					<p className="mt-2 text-2xl font-bold">{metrics.diskUsed}%</p>
-				</div>
-			</div>
-
-			{/* System Information */}
-			<div className="rounded-lg border text-card-foreground shadow-sm p-6">
-				<h3 className="text-lg font-medium mb-4">System Information</h3>
-				<div className="grid gap-4 md:grid-cols-2">
-					<div>
-						<h4 className="text-sm font-medium text-muted-foreground">CPU</h4>
-						<p className="mt-1">{metrics.cpuModel}</p>
-						<p className="text-sm text-muted-foreground mt-1">
-							{metrics.cpuPhysicalCores} Physical Cores ({metrics.cpuCores}{" "}
-							Threads) @ {metrics.cpuSpeed}GHz
-						</p>
-					</div>
-					<div>
-						<h4 className="text-sm font-medium text-muted-foreground">
-							Operating System
-						</h4>
-						<p className="mt-1">{metrics.distro}</p>
-						<p className="text-sm text-muted-foreground mt-1">
-							Kernel: {metrics.kernel} ({metrics.arch})
-						</p>
-					</div>
-				</div>
-			</div>
-
-			{/* Charts Grid */}
-			<div className="grid gap-4 grid-cols-1 md:grid-cols-1 xl:grid-cols-2">
-				<CPUChart data={historicalData} />
-				<MemoryChart data={historicalData} />
-				<DiskChart data={metrics} />
-				<NetworkChart data={historicalData} />
-			</div>
-		</div>
+		</Card>
 	);
 };

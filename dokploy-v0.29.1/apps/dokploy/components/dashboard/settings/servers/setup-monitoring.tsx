@@ -236,17 +236,16 @@ export const SetupMonitoring = ({ serverId }: Props) => {
 
 	return (
 		<>
-			<CardHeader className="">
+			<CardHeader className="px-0 pt-0 pb-6">
 				<CardTitle className="text-xl flex flex-row gap-2">
 					<LayoutDashboardIcon className="size-6 text-muted-foreground self-center" />
-					Monitoring
+					모니터링
 				</CardTitle>
 				<CardDescription>
-					Monitor your servers and containers in realtime with notifications
-					when they reach their thresholds.
+					서버와 컨테이너를 실시간으로 모니터링하고 임계값에 도달하면 알림을 받습니다.
 				</CardDescription>
 			</CardHeader>
-			<CardContent className="space-y-6 py-6 border-t">
+			<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}

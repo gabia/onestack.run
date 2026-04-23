@@ -22,14 +22,14 @@ export const WebServer = () => {
 	return (
 		<div className="w-full">
 			{/* <Card className={cn("rounded-lg w-full bg-transparent p-0", className)}></Card> */}
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<ServerIcon className="size-6 text-muted-foreground self-center" />
-							Web Server
+							웹 서버
 						</CardTitle>
-						<CardDescription>Reload or clean the web server.</CardDescription>
+						<CardDescription>웹 서버를 재시작하거나 정리합니다.</CardDescription>
 					</CardHeader>
 					{/* <CardHeader>
 						<CardTitle className="text-xl">
@@ -39,7 +39,7 @@ export const WebServer = () => {
 							Reload or clean the web server.
 						</CardDescription>
 					</CardHeader> */}
-					<CardContent className="space-y-6 py-6 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<div className="grid md:grid-cols-2 gap-4">
 							<ShowDokployActions />
 							<ShowTraefikActions />
@@ -50,10 +50,10 @@ export const WebServer = () => {
 
 						<div className="flex items-center flex-wrap justify-between gap-4">
 							<span className="text-sm text-muted-foreground">
-								Server IP: {webServerSettings?.serverIp}
+								서버 IP: {webServerSettings?.serverIp}
 							</span>
 							<span className="text-sm text-muted-foreground">
-								Version: {dokployVersion}
+								버전: {dokployVersion}
 							</span>
 
 							<ToggleDockerCleanup />

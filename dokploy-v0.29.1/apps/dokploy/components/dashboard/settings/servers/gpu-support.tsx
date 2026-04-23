@@ -83,15 +83,15 @@ export function GPUSupport({ serverId }: GPUSupportProps) {
 		<CardContent className="p-0">
 			<div className="flex flex-col gap-4">
 				<Card className="bg-background">
-					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2">
+					<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2 pb-6">
 						<div className="flex flex-row gap-2 justify-between w-full items-end max-sm:flex-col">
 							<div className="flex flex-col gap-1">
 								<div className="flex items-center gap-2">
 									<Cpu className="size-5" />
-									<CardTitle className="text-xl">GPU Configuration</CardTitle>
+									<CardTitle className="text-xl">GPU 구성</CardTitle>
 								</div>
 								<CardDescription>
-									Configure and monitor GPU support
+									GPU 지원을 구성하고 모니터링합니다
 								</CardDescription>
 							</div>
 							<div className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export function GPUSupport({ serverId }: GPUSupportProps) {
 						</div>
 					</CardHeader>
 
-					<CardContent className="flex flex-col gap-4">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<AlertBlock type="info">
 							<div className="font-medium mb-2">System Requirements:</div>
 							<ul className="list-disc list-inside text-sm space-y-1">

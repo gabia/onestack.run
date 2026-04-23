@@ -163,7 +163,7 @@ export const ShowHome = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar p-2.5 rounded-xl min-h-[85vh]">
+			<Card className="h-full bg-sidebar rounded-lg min-h-[85vh]">
 				<div className="rounded-xl bg-background shadow-md p-6 flex flex-col gap-6 h-full">
 					<div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
 						<h1 className="text-3xl font-semibold tracking-tight">
@@ -171,7 +171,7 @@ export const ShowHome = () => {
 						</h1>
 						<Button asChild variant="secondary" className="w-fit">
 							<Link href="/dashboard/projects">
-								Go to projects
+								프로젝트로 가기
 								<ArrowRight className="size-4" />
 							</Link>
 						</Button>

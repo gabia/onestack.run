@@ -35,7 +35,7 @@ export const ShowSwarmOverviewModal = ({ serverId }: Props) => {
 						</div>
 					</TabsContent>
 					<TabsContent value="containers">
-						<Card className="h-full bg-sidebar p-2.5 rounded-xl mx-auto w-full">
+						<Card className="h-full bg-sidebar rounded-xl mx-auto w-full">
 							<div className="rounded-xl bg-background shadow-md p-6">
 								<ShowSwarmContainers serverId={serverId} />
 							</div>

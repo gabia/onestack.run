@@ -30,15 +30,15 @@ interface EnterpriseFeatureLockedProps {
  * Use standalone or via EnterpriseFeatureGate.
  */
 export function EnterpriseFeatureLocked({
-	title = "Enterprise feature",
-	description = "This feature is part of Dokploy Enterprise. Add a valid license to use it.",
-	ctaLabel = "Go to License",
+	title = "엔터프라이즈 기능",
+	description = "이 기능은 Dokploy 엔터프라이즈의 일부입니다. 기능을 사용하려면 유효한 라이선스를 추가하세요.",
+	ctaLabel = "라이선스로 이동",
 	ctaHref = "/dashboard/settings/license",
 	compact = false,
 }: EnterpriseFeatureLockedProps) {
 	return (
-		<Card className="border-dashed bg-transparent">
-			<CardHeader className={compact ? "pb-2" : undefined}>
+		<Card className="border-dashed bg-transparent shadow-none">
+			<CardHeader className={compact ? "pb-2" : "pb-6"}>
 				<div className="flex flex-col items-center gap-3 text-center">
 					<div
 						className={
@@ -63,7 +63,7 @@ export function EnterpriseFeatureLocked({
 					</div>
 				</div>
 			</CardHeader>
-			<CardContent className={compact ? "pt-0" : undefined}>
+			<CardContent className={compact ? "pt-0" : "pt-0"}>
 				<div className="flex justify-center">
 					<Button asChild variant="secondary" size={compact ? "sm" : "default"}>
 						<Link href={ctaHref}>{ctaLabel}</Link>
@@ -100,7 +100,7 @@ export function EnterpriseFeatureGate({
 			<div className="flex items-center gap-2 justify-center min-h-[25vh]">
 				<Loader2 className="size-6 text-muted-foreground animate-spin" />
 				<span className="text-sm text-muted-foreground">
-					Checking license...
+					라이선스 확인 중...
 				</span>
 			</div>
 		);

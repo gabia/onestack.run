@@ -31,19 +31,18 @@ export const ShowNotifications = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<Bell className="size-6 text-muted-foreground self-center" />
-							Notifications
+							알림
 						</CardTitle>
 						<CardDescription>
-							Add your providers to receive notifications, like Discord, Slack,
-							Telegram, Teams, Email, Resend, Lark.
+							Discord, Slack, Telegram, Teams, Email, Resend, Lark 등 알림을 받을 제공업체를 추가하세요.
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
 								<span>Loading...</span>

@@ -1,0 +1,149 @@
+// OneStack design tokens — single source of truth
+// Mirrors shadcn/ui HSL variable structure so it drops into Dokploy's globals.css
+
+const OS_TOKENS = {
+  meta: {
+    name: "OneStack",
+    version: "0.1.0",
+    tagline: "Internal deployment platform for gabia",
+  },
+
+  // Raw palette
+  palette: {
+    neutral: {
+      0:   { hex: "#FFFFFF", hsl: "0 0% 100%" },
+      50:  { hex: "#FAFAFA", hsl: "0 0% 98%" },
+      100: { hex: "#F4F4F5", hsl: "240 5% 96%" },
+      200: { hex: "#E4E4E7", hsl: "240 6% 90%" },
+      300: { hex: "#D4D4D8", hsl: "240 5% 84%" },
+      400: { hex: "#A1A1AA", hsl: "240 5% 65%" },
+      500: { hex: "#71717A", hsl: "240 4% 46%" },
+      600: { hex: "#52525B", hsl: "240 5% 34%" },
+      700: { hex: "#3F3F46", hsl: "240 5% 26%" },
+      800: { hex: "#27272A", hsl: "240 4% 16%" },
+      900: { hex: "#18181B", hsl: "240 6% 10%" },
+      950: { hex: "#09090B", hsl: "240 10% 4%" },
+      1000:{ hex: "#000000", hsl: "0 0% 0%" },
+    },
+    brand: {
+      50:  { hex: "#E6F2FA", hsl: "205 70% 94%" },
+      100: { hex: "#C9DEEF", hsl: "205 59% 86%" },
+      200: { hex: "#93BDE0", hsl: "207 56% 73%" },
+      300: { hex: "#5C9BD1", hsl: "209 56% 59%" },
+      400: { hex: "#2B82C7", hsl: "207 64% 47%" },
+      500: { hex: "#006FC1", hsl: "204 100% 38%" }, // primary — gabia cobalt
+      600: { hex: "#005FA8", hsl: "205 100% 33%" },
+      700: { hex: "#004E8A", hsl: "206 100% 27%" },
+      800: { hex: "#003C6B", hsl: "207 100% 21%" },
+      900: { hex: "#002A4D", hsl: "208 100% 15%" },
+    },
+    success: { 500: { hex: "#16A34A", hsl: "142 71% 36%" }, 600: { hex: "#15803D", hsl: "142 72% 29%" } },
+    warning: { 500: { hex: "#F59E0B", hsl: "38 92% 50%" }, 600: { hex: "#D97706", hsl: "32 95% 44%" } },
+    danger:  { 500: { hex: "#DC2626", hsl: "0 72% 51%" }, 600: { hex: "#B91C1C", hsl: "0 74% 42%" } },
+    info:    { 500: { hex: "#0EA5E9", hsl: "199 89% 48%" } },
+  },
+
+  // Semantic (shadcn HSL vars — drop-in for globals.css)
+  semantic: {
+    light: {
+      "--background":        "0 0% 100%",
+      "--foreground":        "240 10% 4%",
+      "--card":              "0 0% 100%",
+      "--card-foreground":   "240 10% 4%",
+      "--popover":           "0 0% 100%",
+      "--popover-foreground":"240 10% 4%",
+      "--primary":           "204 100% 38%",
+      "--primary-foreground":"0 0% 100%",
+      "--secondary":         "240 5% 96%",
+      "--secondary-foreground":"240 6% 10%",
+      "--muted":             "240 5% 96%",
+      "--muted-foreground":  "240 4% 46%",
+      "--accent":            "240 5% 96%",
+      "--accent-foreground": "240 6% 10%",
+      "--destructive":       "0 72% 51%",
+      "--destructive-foreground":"0 0% 100%",
+      "--border":            "240 6% 90%",
+      "--input":             "240 6% 90%",
+      "--ring":              "204 100% 38%",
+      "--radius":            "0.5rem",
+      "--sidebar-background":"0 0% 98%",
+      "--sidebar-foreground":"240 5% 26%",
+      "--sidebar-primary":   "204 100% 38%",
+      "--sidebar-primary-foreground":"0 0% 100%",
+      "--sidebar-accent":    "240 5% 96%",
+      "--sidebar-accent-foreground":"240 6% 10%",
+      "--sidebar-border":    "240 6% 90%",
+      "--sidebar-ring":      "204 100% 38%",
+    },
+    dark: {
+      "--background":        "240 10% 4%",
+      "--foreground":        "0 0% 98%",
+      "--card":              "240 6% 7%",
+      "--card-foreground":   "0 0% 98%",
+      "--popover":           "240 10% 4%",
+      "--popover-foreground":"0 0% 98%",
+      "--primary":           "207 56% 59%",
+      "--primary-foreground":"240 10% 4%",
+      "--secondary":         "240 4% 12%",
+      "--secondary-foreground":"0 0% 98%",
+      "--muted":             "240 4% 12%",
+      "--muted-foreground":  "240 5% 65%",
+      "--accent":            "240 4% 12%",
+      "--accent-foreground": "0 0% 98%",
+      "--destructive":       "0 62% 45%",
+      "--destructive-foreground":"0 0% 98%",
+      "--border":            "240 4% 14%",
+      "--input":             "240 4% 14%",
+      "--ring":              "207 56% 59%",
+      "--radius":            "0.5rem",
+      "--sidebar-background":"240 6% 7%",
+      "--sidebar-foreground":"240 5% 75%",
+      "--sidebar-primary":   "207 56% 59%",
+      "--sidebar-primary-foreground":"240 10% 4%",
+      "--sidebar-accent":    "240 4% 12%",
+      "--sidebar-accent-foreground":"0 0% 98%",
+      "--sidebar-border":    "240 4% 14%",
+      "--sidebar-ring":      "207 56% 59%",
+    },
+  },
+
+  typography: {
+    families: {
+      sans: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace",
+    },
+    scale: [
+      { name: "xs",   px: 12, lh: 16, weight: 400, usage: "캡션, 힌트" },
+      { name: "sm",   px: 13, lh: 18, weight: 400, usage: "조밀한 표, 각주" },
+      { name: "base", px: 14, lh: 20, weight: 400, usage: "본문 — 기본" },
+      { name: "md",   px: 15, lh: 22, weight: 500, usage: "필드 레이블, 활성 내비게이션" },
+      { name: "lg",   px: 16, lh: 24, weight: 500, usage: "카드 제목" },
+      { name: "xl",   px: 18, lh: 26, weight: 600, usage: "섹션 헤딩" },
+      { name: "2xl",  px: 22, lh: 30, weight: 600, usage: "페이지 제목" },
+      { name: "3xl",  px: 28, lh: 36, weight: 600, usage: "피처 헤딩" },
+      { name: "4xl",  px: 36, lh: 44, weight: 600, usage: "히어로" },
+    ],
+  },
+
+  spacing: [
+    { name: "0", px: 0 }, { name: "1", px: 2 }, { name: "2", px: 4 },
+    { name: "3", px: 8 }, { name: "4", px: 12 }, { name: "5", px: 16 },
+    { name: "6", px: 20 }, { name: "7", px: 24 }, { name: "8", px: 32 },
+    { name: "9", px: 40 }, { name: "10", px: 48 }, { name: "11", px: 64 },
+    { name: "12", px: 80 },
+  ],
+
+  radius: [
+    { name: "none", px: 0 }, { name: "sm", px: 4 }, { name: "md", px: 6 },
+    { name: "lg", px: 8 }, { name: "xl", px: 12 }, { name: "pill", px: 9999 },
+  ],
+
+  shadow: [
+    { name: "sm", css: "0 1px 2px rgba(0,0,0,.05)", usage: "Subtle raise" },
+    { name: "md", css: "0 2px 8px rgba(0,0,0,.08)", usage: "Card hover, popover" },
+    { name: "lg", css: "0 8px 24px rgba(0,0,0,.12)", usage: "Modal, floating" },
+    { name: "focus", css: "0 0 0 3px hsl(204 100% 38% / 0.25)", usage: ":focus-visible ring" },
+  ],
+};
+
+export default OS_TOKENS;

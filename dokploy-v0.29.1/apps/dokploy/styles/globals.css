@@ -6,32 +6,33 @@
 	:root {
 		--terminal-paste: rgba(0, 0, 0, 0.2);
 		--background: 0 0% 100%;
-		--foreground: 240 10% 3.9%;
+		--foreground: 240 10% 4%;
 
 		--card: 0 0% 100%;
-		--card-foreground: 240 10% 3.9%;
+		--card-foreground: 240 10% 4%;
 
 		--popover: 0 0% 100%;
-		--popover-foreground: 240 10% 3.9%;
+		--popover-foreground: 240 10% 4%;
 
-		--primary: 240 5.9% 10%;
-		--primary-foreground: 0 0% 98%;
+		/* OneStack: Gabia Cobalt primary */
+		--primary: 204 100% 38%;
+		--primary-foreground: 0 0% 100%;
 
-		--secondary: 240 4.8% 95.9%;
-		--secondary-foreground: 240 5.9% 10%;
+		--secondary: 240 5% 96%;
+		--secondary-foreground: 240 6% 10%;
 
-		--muted: 240 4.8% 95.9%;
-		--muted-foreground: 240 3.8% 46.1%;
+		--muted: 240 5% 96%;
+		--muted-foreground: 240 4% 46%;
 
-		--accent: 240 4.8% 95.9%;
-		--accent-foreground: 240 5.9% 10%;
+		--accent: 240 5% 96%;
+		--accent-foreground: 240 6% 10%;
 
-		--destructive: 0 84.2% 50.2%;
-		--destructive-foreground: 0 0% 98%;
+		--destructive: 0 72% 51%;
+		--destructive-foreground: 0 0% 100%;
 
-		--border: 240 5.9% 90%;
-		--input: 240 5.9% 90%;
-		--ring: 240 10% 3.9%;
+		--border: 240 6% 90%;
+		--input: 240 6% 90%;
+		--ring: 204 100% 38%;
 
 		--radius: 0.5rem;
 		--overlay: rgba(0, 0, 0, 0.2);
@@ -41,61 +42,66 @@
 		--chart-3: 197 37% 24%;
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
+
 		--sidebar-background: 0 0% 98%;
-		--sidebar-foreground: 240 5.3% 26.1%;
-		--sidebar-primary: 240 5.9% 10%;
-		--sidebar-primary-foreground: 0 0% 98%;
-		--sidebar-accent: 240 4.8% 95.9%;
-		--sidebar-accent-foreground: 240 5.9% 10%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
+		--sidebar-foreground: 240 5% 26%;
+		--sidebar-primary: 204 100% 38%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 204 66% 94%;
+		--sidebar-accent-foreground: 204 100% 25%;
+		--sidebar-hover: 240 5% 96%;
+		--sidebar-border: 240 6% 90%;
+		--sidebar-ring: 204 100% 38%;
 	}
 
 	.dark {
 		--terminal-paste: rgba(255, 255, 255, 0.2);
-		--background: 0 0% 0%;
+		--background: 240 10% 4%;
 		--foreground: 0 0% 98%;
 
-		--card: 240 4% 10%;
+		--card: 240 6% 7%;
 		--card-foreground: 0 0% 98%;
 
-		--popover: 240 10% 3.9%;
+		--popover: 240 10% 4%;
 		--popover-foreground: 0 0% 98%;
 
-		--primary: 0 0% 98%;
-		--primary-foreground: 240 5.9% 10%;
+		/* OneStack: Cobalt blue for dark mode */
+		--primary: 207 56% 59%;
+		--primary-foreground: 240 10% 4%;
 
-		--secondary: 240 3.7% 15.9%;
+		--secondary: 240 4% 12%;
 		--secondary-foreground: 0 0% 98%;
 
-		--muted: 240 4% 10%;
-		--muted-foreground: 240 5% 64.9%;
+		--muted: 240 4% 12%;
+		--muted-foreground: 240 5% 65%;
 
-		--accent: 240 3.7% 15.9%;
+		--accent: 240 4% 12%;
 		--accent-foreground: 0 0% 98%;
 
-		--destructive: 0 84.2% 50.2%;
+		--destructive: 0 62% 45%;
 		--destructive-foreground: 0 0% 98%;
 
-		--border: 240 3.7% 15.9%;
-		--input: 240 4% 10%;
-		--ring: 240 4.9% 83.9%;
+		--border: 240 4% 28%;
+		--input: 240 4% 28%;
+		--ring: 207 56% 59%;
 
 		--overlay: rgba(0, 0, 0, 0.5);
 
 		--chart-1: 220 70% 50%;
-		--chart-5: 160 60% 45%;
+		--chart-2: 340 75% 55%;
 		--chart-3: 30 80% 55%;
 		--chart-4: 280 65% 60%;
-		--chart-2: 340 75% 55%;
-		--sidebar-background: 240 5.9% 10%;
-		--sidebar-foreground: 240 4.8% 95.9%;
-		--sidebar-primary: 224.3 76.3% 48%;
-		--sidebar-primary-foreground: 0 0% 100%;
-		--sidebar-accent: 240 3.7% 15.9%;
-		--sidebar-accent-foreground: 240 4.8% 95.9%;
-		--sidebar-border: 240 3.7% 15.9%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
+		--chart-5: 160 60% 45%;
+
+		--sidebar-background: 240 6% 7%;
+		--sidebar-foreground: 240 5% 75%;
+		--sidebar-primary: 207 56% 59%;
+		--sidebar-primary-foreground: 240 10% 4%;
+		--sidebar-accent: 204 35% 18%;
+		--sidebar-accent-foreground: 204 70% 80%;
+		--sidebar-hover: 240 4% 16%;
+		--sidebar-border: 240 4% 14%;
+		--sidebar-ring: 207 56% 59%;
 	}
 }
 
@@ -130,6 +136,16 @@
 
 .xterm-viewport {
 	border-radius: 0.75rem /* 12px */ !important;
+}
+
+/* Sidebar active item */
+html:not(.dark) [data-sidebar="menu-button"][data-active="true"] {
+	background-color: #E6F2FA !important;
+	color: hsl(204 100% 25%) !important;
+}
+html.dark [data-sidebar="menu-button"][data-active="true"] {
+	background-color: hsl(204 35% 18%) !important;
+	color: hsl(204 70% 80%) !important;
 }
 
 .xterm .xterm-viewport {

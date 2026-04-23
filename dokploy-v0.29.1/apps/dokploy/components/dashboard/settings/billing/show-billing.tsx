@@ -162,16 +162,16 @@ export const ShowBilling = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="bg-sidebar p-2.5 rounded-xl max-w-6xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md">
-					<CardHeader className="flex flex-row items-start justify-between">
+			<Card className="bg-sidebar rounded-lg max-w-6xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="flex flex-row items-start justify-between px-0 pt-0 pb-6">
 						<div>
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<CreditCard className="size-6 text-muted-foreground self-center" />
-								Billing
+								결제
 							</CardTitle>
 							<CardDescription>
-								Manage your subscription and invoices
+								구독 및 인보이스 관리
 							</CardDescription>
 						</div>
 						{(admin?.user.stripeSubscriptionId || isEnterpriseCloud) && (
@@ -225,7 +225,7 @@ export const ShowBilling = () => {
 							</Dialog>
 						)}
 					</CardHeader>
-					<CardContent className="space-y-4 py-4 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<nav className="flex space-x-2 border-b">
 							{navigationItems.map((item) => {
 								const Icon = item.icon;

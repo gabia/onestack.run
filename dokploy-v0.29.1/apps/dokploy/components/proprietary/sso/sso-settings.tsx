@@ -102,12 +102,14 @@ export const SSOSettings = () => {
 		if (!value) return;
 		try {
 			await addTrustedOrigin({ origin: value });
-			toast.success("Trusted origin added");
+			toast.success("신뢰할 수 있는 오리진이 추가되었습니다");
 			setNewOriginInput("");
 			await utils.sso.getTrustedOrigins.invalidate();
 		} catch (err) {
 			toast.error(
-				err instanceof Error ? err.message : "Failed to add trusted origin",
+				err instanceof Error
+					? err.message
+					: "신뢰할 수 있는 오리진 추가에 실패했습니다",
 			);
 		}
 	};
@@ -115,12 +117,14 @@ export const SSOSettings = () => {
 	const handleRemoveOrigin = async (origin: string) => {
 		try {
 			await removeTrustedOrigin({ origin });
-			toast.success("Trusted origin removed");
+			toast.success("신뢰할 수 있는 오리진이 제거되었습니다");
 			if (editingOrigin === origin) setEditingOrigin(null);
 			await utils.sso.getTrustedOrigins.invalidate();
 		} catch (err) {
 			toast.error(
-				err instanceof Error ? err.message : "Failed to remove trusted origin",
+				err instanceof Error
+					? err.message
+					: "신뢰할 수 있는 오리진 제거에 실패했습니다",
 			);
 		}
 	};
@@ -140,13 +144,15 @@ export const SSOSettings = () => {
 				oldOrigin: editingOrigin,
 				newOrigin: editingValue.trim(),
 			});
-			toast.success("Trusted origin updated");
+			toast.success("신뢰할 수 있는 오리진이 업데이트되었습니다");
 			setEditingOrigin(null);
 			setEditingValue("");
 			await utils.sso.getTrustedOrigins.invalidate();
 		} catch (err) {
 			toast.error(
-				err instanceof Error ? err.message : "Failed to update trusted origin",
+				err instanceof Error
+					? err.message
+					: "신뢰할 수 있는 오리진 업데이트에 실패했습니다",
 			);
 		}
 	};
@@ -157,198 +163,208 @@ export const SSOSettings = () => {
 	};
 
 	return (
-		<div className="flex flex-col gap-4 rounded-lg border p-4">
-			<div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-				<div className="flex flex-col gap-2">
-					<div className="flex items-center gap-2">
-						<LogIn className="size-6 text-muted-foreground" />
-						<CardTitle className="text-xl">Single Sign-On (SSO)</CardTitle>
-					</div>
-					<CardDescription>
-						Configure OIDC or SAML identity providers for enterprise sign-in.
-						Users can sign in with their organization&apos;s IdP.
-					</CardDescription>
-				</div>
-				<Button
-					variant="outline"
-					size="sm"
-					onClick={() => setManageOriginsOpen(true)}
-					className="shrink-0"
-				>
-					<Shield className="mr-2 size-4" />
-					Manage origins
-				</Button>
-			</div>
-
-			{isPending ? (
-				<div className="flex items-center gap-2 justify-center min-h-[25vh]">
-					<Loader2 className="size-6 text-muted-foreground animate-spin" />
-					<span className="text-sm text-muted-foreground">
-						Loading providers...
-					</span>
-				</div>
-			) : (
-				<>
-					{providers && providers.length > 0 && (
-						<div className="flex flex-wrap items-center gap-2">
-							<RegisterOidcDialog>
-								<Button variant="secondary" size="sm">
-									<LogIn className="mr-2 size-4" />
-									Add OIDC provider
-								</Button>
-							</RegisterOidcDialog>
-							<RegisterSamlDialog>
-								<Button variant="secondary" size="sm">
-									<LogIn className="mr-2 size-4" />
-									Add SAML provider
-								</Button>
-							</RegisterSamlDialog>
+		<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto w-full">
+			<div className="rounded-xl bg-background shadow-md p-6">
+				<CardHeader className="flex flex-row justify-between gap-4 flex-wrap px-0 pt-0 pb-6">
+					<div className="flex flex-col gap-1">
+						<div className="flex items-center gap-2">
+							<LogIn className="size-6 text-muted-foreground self-center" />
+							<CardTitle className="text-xl">SSO (단일 로그인)</CardTitle>
 						</div>
-					)}
+						<CardDescription>
+							엔터프라이즈 로그인을 위해 OIDC 또는 SAML 인증 제공자를 구성합니다.
+							사용자는 조직의 IdP를 통해 로그인할 수 있습니다.
+						</CardDescription>
+					</div>
+					<Button
+						variant="outline"
+						size="sm"
+						onClick={() => setManageOriginsOpen(true)}
+						className="shrink-0"
+					>
+						<Shield className="mr-2 size-4" />
+						오리진 관리
+					</Button>
+				</CardHeader>
 
-					{providers && providers.length > 0 ? (
-						<div className="space-y-3">
-							<span className="text-sm font-medium">Registered providers</span>
-							<div className="grid gap-3 sm:grid-cols-2">
-								{providers.map((provider) => {
-									const isOidc = !!provider.oidcConfig;
-									const isSaml = !!provider.samlConfig;
-
-									return (
-										<Card
-											key={provider.id}
-											className="overflow-hidden bg-background"
-										>
-											<CardHeader className="pb-2">
-												<div className="flex items-start justify-between gap-2">
-													<div className="flex flex-col gap-1">
-														<CardTitle className="text-base font-medium">
-															{provider.providerId}
-														</CardTitle>
-														<CardDescription className="text-xs">
-															{provider.issuer}
-														</CardDescription>
-														<div className="flex flex-wrap gap-1 mt-1">
-															<Badge variant="secondary" className="text-xs">
-																{provider.domain}
-															</Badge>
-															{isOidc && (
-																<Badge variant="outline" className="text-xs">
-																	OIDC
-																</Badge>
-															)}
-															{isSaml && (
-																<Badge variant="outline" className="text-xs">
-																	SAML
-																</Badge>
-															)}
-														</div>
-													</div>
-												</div>
-											</CardHeader>
-											<CardContent className="flex flex-wrap gap-2 pt-0">
-												<Button
-													variant="ghost"
-													size="sm"
-													onClick={() =>
-														setDetailsProvider({
-															id: provider.id,
-															providerId: provider.providerId,
-															issuer: provider.issuer,
-															domain: provider.domain,
-															oidcConfig: provider.oidcConfig,
-															samlConfig: provider.samlConfig,
-															organizationId: provider.organizationId,
-														})
-													}
-												>
-													<Eye className="mr-1 size-3" />
-													View details
-												</Button>
-												{isOidc && (
-													<RegisterOidcDialog providerId={provider.providerId}>
-														<Button variant="ghost" size="sm">
-															<Pencil className="mr-1 size-3" />
-															Edit
-														</Button>
-													</RegisterOidcDialog>
-												)}
-												{isSaml && (
-													<RegisterSamlDialog providerId={provider.providerId}>
-														<Button variant="ghost" size="sm">
-															<Pencil className="mr-1 size-3" />
-															Edit
-														</Button>
-													</RegisterSamlDialog>
-												)}
-												<DialogAction
-													title="Remove SSO provider"
-													description={`Remove provider "${provider.providerId}"? Users will no longer be able to sign in with this IdP.`}
-													type="destructive"
-													onClick={async () => {
-														try {
-															await deleteProvider({
-																providerId: provider.providerId,
-															});
-															toast.success("Provider removed");
-															await utils.sso.listProviders.invalidate();
-														} catch (err) {
-															toast.error(
-																err instanceof Error
-																	? err.message
-																	: "Failed to remove provider",
-															);
-														}
-													}}
-												>
-													<Button
-														variant="ghost"
-														size="sm"
-														className="text-destructive hover:text-destructive"
-														disabled={isDeleting}
-													>
-														<Trash2 className="mr-1 size-3" />
-														Remove
-													</Button>
-												</DialogAction>
-											</CardContent>
-										</Card>
-									);
-								})}
-							</div>
+				<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
+					{isPending ? (
+						<div className="flex items-center gap-2 justify-center min-h-[25vh]">
+							<Loader2 className="size-6 text-muted-foreground animate-spin" />
+							<span className="text-sm text-muted-foreground">
+								제공자 로딩 중...
+							</span>
 						</div>
 					) : (
-						<div className="flex flex-col items-center gap-4 justify-center min-h-[30vh] text-center">
-							<div className="flex flex-col items-center gap-2 max-w-[400px]">
-								<div className="rounded-full bg-muted p-4">
-									<LogIn className="size-8 text-muted-foreground" />
+						<>
+							{providers && providers.length > 0 && (
+								<div className="flex flex-wrap items-center gap-2">
+									<RegisterOidcDialog>
+										<Button variant="secondary" size="sm">
+											<LogIn className="mr-2 size-4" />
+											OIDC 제공자 추가
+										</Button>
+									</RegisterOidcDialog>
+									<RegisterSamlDialog>
+										<Button variant="secondary" size="sm">
+											<LogIn className="mr-2 size-4" />
+											SAML 제공자 추가
+										</Button>
+									</RegisterSamlDialog>
 								</div>
-								<div className="space-y-1">
-									<h3 className="text-lg font-semibold">No SSO providers</h3>
-									<p className="text-sm text-muted-foreground">
-										Add an OIDC or SAML provider so users can sign in with their
-										organization&apos;s IdP (e.g. Okta, Azure AD).
-									</p>
+							)}
+
+							{providers && providers.length > 0 ? (
+								<div className="space-y-3">
+									<span className="text-sm font-medium">등록된 제공자</span>
+									<div className="grid gap-3 sm:grid-cols-2">
+										{providers.map((provider) => {
+											const isOidc = !!provider.oidcConfig;
+											const isSaml = !!provider.samlConfig;
+
+											return (
+												<Card
+													key={provider.id}
+													className="overflow-hidden bg-sidebar/40 border shadow-sm"
+												>
+													<CardHeader className="pb-2">
+														<div className="flex items-start justify-between gap-2">
+															<div className="flex flex-col gap-1">
+																<CardTitle className="text-base font-medium">
+																	{provider.providerId}
+																</CardTitle>
+																<CardDescription className="text-xs">
+																	{provider.issuer}
+																</CardDescription>
+																<div className="flex flex-wrap gap-1 mt-1">
+																	<Badge variant="secondary" className="text-xs">
+																		{provider.domain}
+																	</Badge>
+																	{isOidc && (
+																		<Badge variant="outline" className="text-xs">
+																			OIDC
+																		</Badge>
+																	)}
+																	{isSaml && (
+																		<Badge variant="outline" className="text-xs">
+																			SAML
+																		</Badge>
+																	)}
+																</div>
+															</div>
+														</div>
+													</CardHeader>
+													<CardContent className="flex flex-wrap gap-2 pt-0 pb-4">
+														<Button
+															variant="ghost"
+															size="sm"
+															onClick={() =>
+																setDetailsProvider({
+																	id: provider.id,
+																	providerId: provider.providerId,
+																	issuer: provider.issuer,
+																	domain: provider.domain,
+																	oidcConfig: provider.oidcConfig,
+																	samlConfig: provider.samlConfig,
+																	organizationId: provider.organizationId,
+																})
+															}
+														>
+															<Eye className="mr-1 size-3" />
+															상세 보기
+														</Button>
+														{isOidc && (
+															<RegisterOidcDialog
+																providerId={provider.providerId}
+															>
+																<Button variant="ghost" size="sm">
+																	<Pencil className="mr-1 size-3" />
+																	수정
+																</Button>
+															</RegisterOidcDialog>
+														)}
+														{isSaml && (
+															<RegisterSamlDialog
+																providerId={provider.providerId}
+															>
+																<Button variant="ghost" size="sm">
+																	<Pencil className="mr-1 size-3" />
+																	수정
+																</Button>
+															</RegisterSamlDialog>
+														)}
+														<DialogAction
+															title="SSO 제공자 삭제"
+															description={`"${provider.providerId}" 제공자를 삭제하시겠습니까? 사용자는 더 이상 이 IdP로 로그인할 수 없습니다.`}
+															type="destructive"
+															onClick={async () => {
+																try {
+																	await deleteProvider({
+																		providerId: provider.providerId,
+																	});
+																	toast.success("제공자가 삭제되었습니다");
+																	await utils.sso.listProviders.invalidate();
+																} catch (err) {
+																	toast.error(
+																		err instanceof Error
+																			? err.message
+																			: "제공자 삭제에 실패했습니다",
+																	);
+																}
+															}}
+														>
+															<Button
+																variant="ghost"
+																size="sm"
+																className="text-destructive hover:text-destructive"
+																disabled={isDeleting}
+															>
+																<Trash2 className="mr-1 size-3" />
+																삭제
+															</Button>
+														</DialogAction>
+													</CardContent>
+												</Card>
+											);
+										})}
+									</div>
 								</div>
-							</div>
-							<div className="flex flex-wrap gap-2 justify-center">
-								<RegisterOidcDialog>
-									<Button variant="secondary">
-										<LogIn className="mr-2 size-4" />
-										Add OIDC provider
-									</Button>
-								</RegisterOidcDialog>
-								<RegisterSamlDialog>
-									<Button variant="outline">
-										<LogIn className="mr-2 size-4" />
-										Add SAML provider
-									</Button>
-								</RegisterSamlDialog>
-							</div>
-						</div>
+							) : (
+								<div className="flex flex-col items-center gap-4 justify-center min-h-[35vh] text-center">
+									<div className="flex flex-col items-center gap-2 max-w-[400px]">
+										<div className="rounded-full bg-muted p-4">
+											<LogIn className="size-8 text-muted-foreground" />
+										</div>
+										<div className="space-y-1">
+											<h3 className="text-lg font-semibold">
+												SSO 제공자가 없습니다
+											</h3>
+											<p className="text-sm text-muted-foreground">
+												OIDC 또는 SAML 제공자를 추가하여 사용자가 조직의 IdP(예:
+												Okta, Azure AD)로 로그인할 수 있게 하세요.
+											</p>
+										</div>
+									</div>
+									<div className="flex flex-wrap gap-2 justify-center">
+										<RegisterOidcDialog>
+											<Button variant="secondary">
+												<LogIn className="mr-2 size-4" />
+												OIDC 제공자 추가
+											</Button>
+										</RegisterOidcDialog>
+										<RegisterSamlDialog>
+											<Button variant="outline">
+												<LogIn className="mr-2 size-4" />
+												SAML 제공자 추가
+											</Button>
+										</RegisterSamlDialog>
+									</div>
+								</div>
+							)}
+						</>
 					)}
-				</>
-			)}
+				</CardContent>
+			</div>
 
 			<Dialog
 				open={!!detailsProvider}
@@ -358,15 +374,15 @@ export const SSOSettings = () => {
 					{detailsProvider && (
 						<>
 							<DialogHeader>
-								<DialogTitle>SSO provider details</DialogTitle>
+								<DialogTitle>SSO 제공자 상세 정보</DialogTitle>
 								<DialogDescription>
-									Use Edit to change provider settings (OIDC or SAML).
+									설정을 변경하려면 수정을 클릭하세요.
 								</DialogDescription>
 							</DialogHeader>
 							<div className="grid gap-3 py-2">
 								<div className="grid gap-1">
 									<span className="text-xs font-medium text-muted-foreground">
-										Provider ID
+										제공자 ID
 									</span>
 									<p className="rounded-md bg-muted px-2 py-1.5 font-mono text-sm">
 										{detailsProvider.providerId}
@@ -382,7 +398,7 @@ export const SSOSettings = () => {
 								</div>
 								<div className="grid gap-1">
 									<span className="text-xs font-medium text-muted-foreground">
-										Domain
+										도메인
 									</span>
 									<p className="rounded-md bg-muted px-2 py-1.5 text-sm">
 										{detailsProvider.domain}
@@ -398,7 +414,7 @@ export const SSOSettings = () => {
 													{oidc.clientId && (
 														<div className="grid gap-1">
 															<span className="text-xs font-medium text-muted-foreground">
-																Client ID
+																클라이언트 ID
 															</span>
 															<p className="rounded-md bg-muted px-2 py-1.5 font-mono text-sm">
 																{oidc.clientId}
@@ -440,7 +456,7 @@ export const SSOSettings = () => {
 								)}
 								<div className="grid gap-1">
 									<span className="text-xs font-medium text-muted-foreground">
-										Callback URL (configure in your IdP)
+										콜백 URL (IdP에서 설정)
 									</span>
 									<p className="break-all rounded-md bg-muted px-2 py-1.5 font-mono text-xs">
 										{baseURL || "{baseURL}"}
@@ -451,8 +467,8 @@ export const SSOSettings = () => {
 									</p>
 									{!baseURL && (
 										<p className="text-xs text-muted-foreground">
-											Replace {"{baseURL}"} with your Dokploy URL (e.g. https://
-											your-domain.com).
+											{"{baseURL}"}을 실제 Dokploy URL(예:
+											https://your-domain.com)로 바꾸세요.
 										</p>
 									)}
 								</div>
@@ -462,7 +478,7 @@ export const SSOSettings = () => {
 									variant="outline"
 									onClick={() => setDetailsProvider(null)}
 								>
-									Close
+									닫기
 								</Button>
 							</DialogFooter>
 						</>
@@ -475,19 +491,18 @@ export const SSOSettings = () => {
 					<DialogHeader>
 						<DialogTitle className="flex items-center gap-2">
 							<Shield className="size-5" />
-							Trusted origins
+							신뢰할 수 있는 오리진
 						</DialogTitle>
 						<DialogDescription>
-							Manage allowed origins for SSO callbacks. Add, edit, or remove
-							origins for your account.
+							SSO 콜백을 위해 허용된 오리진을 관리합니다.
 						</DialogDescription>
 					</DialogHeader>
 					<div className="space-y-4 py-2">
 						<div className="space-y-2">
-							<span className="text-sm font-medium">Current origins</span>
+							<span className="text-sm font-medium">현재 오리진</span>
 							{trustedOrigins.length === 0 ? (
 								<p className="rounded-md border border-dashed bg-muted/30 px-3 py-4 text-center text-sm text-muted-foreground">
-									No trusted origins yet. Add one below.
+									등록된 오리진이 없습니다. 아래에서 추가하세요.
 								</p>
 							) : (
 								<ul className="flex flex-col gap-2">
@@ -510,14 +525,14 @@ export const SSOSettings = () => {
 														onClick={handleSaveEdit}
 														disabled={!editingValue.trim() || isUpdatingOrigin}
 													>
-														Save
+														저장
 													</Button>
 													<Button
 														size="sm"
 														variant="ghost"
 														onClick={handleCancelEdit}
 													>
-														Cancel
+														취소
 													</Button>
 												</>
 											) : (
@@ -534,8 +549,8 @@ export const SSOSettings = () => {
 														<Pencil className="size-3.5" />
 													</Button>
 													<DialogAction
-														title="Remove trusted origin"
-														description={`Remove "${origin}" from trusted origins?`}
+														title="신뢰할 수 있는 오리진 제거"
+														description={`"${origin}" 오리진을 제거하시겠습니까?`}
 														type="destructive"
 														onClick={async () => handleRemoveOrigin(origin)}
 													>
@@ -556,7 +571,7 @@ export const SSOSettings = () => {
 							)}
 						</div>
 						<div className="space-y-2">
-							<span className="text-sm font-medium">Add trusted origin</span>
+							<span className="text-sm font-medium">오리진 추가</span>
 							<div className="flex gap-2">
 								<Input
 									value={newOriginInput}
@@ -576,7 +591,7 @@ export const SSOSettings = () => {
 									disabled={!newOriginInput.trim() || isAddingOrigin}
 								>
 									<Plus className="mr-1 size-4" />
-									Add
+									추가
 								</Button>
 							</div>
 						</div>
@@ -586,11 +601,11 @@ export const SSOSettings = () => {
 							variant="outline"
 							onClick={() => setManageOriginsOpen(false)}
 						>
-							Close
+							닫기
 						</Button>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-		</div>
+		</Card>
 	);
 };

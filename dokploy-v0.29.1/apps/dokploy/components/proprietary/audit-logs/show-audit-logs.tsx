@@ -83,7 +83,7 @@ function AuditLogsContent() {
 
 export function ShowAuditLogs() {
 	return (
-		<Card className="h-full bg-sidebar p-2.5 rounded-xl max-w-6xl w-full mx-auto">
+		<Card className="h-full bg-sidebar rounded-lg max-w-6xl w-full mx-auto">
 			<div className="rounded-xl bg-background shadow-md ">
 				<EnterpriseFeatureGate
 					lockedProps={{

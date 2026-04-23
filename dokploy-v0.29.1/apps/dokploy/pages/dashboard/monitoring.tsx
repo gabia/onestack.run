@@ -24,61 +24,32 @@ const Dashboard = () => {
 	const { data: monitoring, isPending } = api.user.getMetricsToken.useQuery();
 	return (
 		<div className="space-y-4 pb-10">
-			{/* <AlertBlock>
-				You are watching the <strong>Free</strong> plan.{" "}
-				<a
-					href="https://dokploy.com#pricing"
-					target="_blank"
-					className="underline"
-					rel="noreferrer"
-				>
-					Upgrade
-				</a>{" "}
-				to get more features.
-			</AlertBlock> */}
 			{isPending ? (
-				<Card className="bg-sidebar  p-2.5 rounded-xl  mx-auto  items-center">
-					<div className="rounded-xl bg-background flex shadow-md px-4 min-h-[50vh] justify-center items-center text-muted-foreground">
-						Loading...
-						<Loader2 className="h-4 w-4 animate-spin" />
+				<Card className="h-full bg-sidebar rounded-lg w-full">
+					<div className="rounded-xl bg-background shadow-md p-6 min-h-[50vh] flex justify-center items-center text-muted-foreground">
+						<span>로딩 중...</span>
+						<Loader2 className="h-4 w-4 animate-spin ml-2" />
 					</div>
 				</Card>
 			) : (
-				<>
-					{/* {monitoring?.enabledFeatures && (
-						<div className="flex flex-row border w-fit p-4 rounded-lg items-center gap-2">
-							<Label className="text-muted-foreground">Change Monitoring</Label>
-							<Switch
-								checked={toggleMonitoring}
-								onCheckedChange={setToggleMonitoring}
-							/>
-						</div>
-					)} */}
+				<div className="h-full w-full">
 					{toggleMonitoring ? (
-						<Card className="bg-sidebar  p-2.5 rounded-xl  mx-auto">
-							<div className="rounded-xl bg-background shadow-md">
-								<ShowPaidMonitoring
-									BASE_URL={
-										process.env.NODE_ENV === "production"
-											? `http://${monitoring?.serverIp}:${monitoring?.metricsConfig?.server?.port}/metrics`
-											: BASE_URL
-									}
-									token={
-										process.env.NODE_ENV === "production"
-											? monitoring?.metricsConfig?.server?.token
-											: DEFAULT_TOKEN
-									}
-								/>
-							</div>
-						</Card>
+						<ShowPaidMonitoring
+							BASE_URL={
+								process.env.NODE_ENV === "production"
+									? `http://${monitoring?.serverIp}:${monitoring?.metricsConfig?.server?.port}/metrics`
+									: BASE_URL
+							}
+							token={
+								process.env.NODE_ENV === "production"
+									? monitoring?.metricsConfig?.server?.token
+									: DEFAULT_TOKEN
+							}
+						/>
 					) : (
-						<Card className="h-full bg-sidebar  p-2.5 rounded-xl">
-							<div className="rounded-xl bg-background shadow-md p-6">
-								<ContainerFreeMonitoring appName="dokploy" />
-							</div>
-						</Card>
+						<ContainerFreeMonitoring appName="dokploy" />
 					)}
-				</>
+				</div>
 			)}
 		</div>
 	);
@@ -87,7 +58,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 Dashboard.getLayout = (page: ReactElement) => {
-	return <DashboardLayout>{page}</DashboardLayout>;
+	return <DashboardLayout metaName="모니터링">{page}</DashboardLayout>;
 };
 export async function getServerSideProps(
 	ctx: GetServerSidePropsContext<{ serviceId: string }>,

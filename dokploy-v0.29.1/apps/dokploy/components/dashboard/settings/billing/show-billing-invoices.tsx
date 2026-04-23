@@ -29,18 +29,18 @@ export const ShowBillingInvoices = () => {
 
 	return (
 		<div className="w-full">
-			<Card className="bg-sidebar p-2.5 rounded-xl max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md">
-					<CardHeader>
+			<Card className="bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<CreditCard className="size-6 text-muted-foreground self-center" />
-							Billing
+							결제
 						</CardTitle>
 						<CardDescription>
-							Manage your subscription and invoices
+							구독 및 인보이스 관리
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-4 py-4 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						<nav className="flex space-x-2 border-b">
 							{navigationItems.map((item) => {
 								const Icon = item.icon;

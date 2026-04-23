@@ -110,22 +110,22 @@ export function LinkingAccount() {
 	const canUnlink = accounts.length > 1;
 
 	return (
-		<Card className="h-full bg-sidebar p-2.5 rounded-xl max-w-6xl mx-auto w-full">
-			<div className="rounded-xl bg-background shadow-md">
-				<CardHeader>
+		<Card className="h-full bg-sidebar rounded-lg max-w-6xl mx-auto w-full">
+			<div className="rounded-xl bg-background shadow-md p-6">
+				<CardHeader className="px-0 pt-0 pb-6">
 					<div className="flex flex-row gap-2 flex-wrap justify-between items-center">
 						<div>
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<Link2 className="size-6 text-muted-foreground self-center" />
-								Linking account
+								계정 연결
 							</CardTitle>
 							<CardDescription>
-								Link your Google or GitHub account to sign in with them.
+								Google 또는 GitHub 계정을 연결하여 해당 계정으로 로그인하세요.
 							</CardDescription>
 						</div>
 					</div>
 				</CardHeader>
-				<CardContent className="space-y-6 py-8 border-t">
+				<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 					{/* Linked accounts */}
 					<div className="space-y-2">
 						<p className="text-sm font-medium">Linked accounts</p>

@@ -19,19 +19,19 @@ export const ShowDestinations = () => {
 	const { data: permissions } = api.user.getPermissions.useQuery();
 	return (
 		<div className="w-full">
-			<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-5xl mx-auto">
-				<div className="rounded-xl bg-background shadow-md ">
-					<CardHeader className="">
+			<Card className="h-full bg-sidebar rounded-lg max-w-5xl mx-auto">
+				<div className="rounded-xl bg-background shadow-md p-6">
+					<CardHeader className="px-0 pt-0 pb-6">
 						<CardTitle className="text-xl flex flex-row gap-2">
 							<Database className="size-6 text-muted-foreground self-center" />
-							S3 Destinations
+							S3 저장소
 						</CardTitle>
 						<CardDescription>
-							Add your providers like AWS S3, Cloudflare R2, Wasabi,
-							DigitalOcean Spaces etc.
+							AWS S3, Cloudflare R2, Wasabi, DigitalOcean Spaces 등의 프로바이더를
+							추가하세요.
 						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-2 py-8 border-t">
+					<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
 						{isPending ? (
 							<div className="flex flex-row gap-2 items-center justify-center text-sm text-muted-foreground min-h-[25vh]">
 								<span>Loading...</span>

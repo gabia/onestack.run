@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 import {
 	AlertCircle,
 	ArrowDownUp,
@@ -91,181 +92,195 @@ export const ShowRequests = () => {
 	}, [logCleanupStatus]);
 
 	return (
-		<>
-			<div className="w-full">
-				<Card className="h-full bg-sidebar  p-2.5 rounded-xl  max-w-8xl mx-auto">
-					<div className="rounded-xl bg-background shadow-md ">
-						<CardHeader className="">
+		<Card className="h-full bg-sidebar rounded-lg w-full">
+			<div className="rounded-xl bg-background shadow-md p-6">
+				<CardHeader className="px-0 pt-0 pb-6">
+					<div className="flex flex-row justify-between items-center gap-4 flex-wrap">
+						<div className="flex flex-col gap-1">
 							<CardTitle className="text-xl flex flex-row gap-2">
 								<ArrowDownUp className="size-6 text-muted-foreground self-center" />
-								Requests
+								요청 (Requests)
 							</CardTitle>
 							<CardDescription>
-								See all the incoming requests that pass trough Traefik
+								Traefik을 통과하는 모든 인입 요청을 확인합니다.
 							</CardDescription>
+						</div>
+						<DialogAction
+							title={isActive ? "요청 비활성화" : "요청 활성화"}
+							description="변경 사항을 적용하려면 Traefik을 재시작해야 합니다."
+							type={isActive ? "destructive" : "default"}
+							onClick={async () => {
+								await toggleRequests({ enable: !isActive })
+									.then(() => {
+										refetch();
+										toast.success(
+											`요청 통계가 ${isActive ? "비활성화" : "활성화"}되었습니다`,
+										);
+									})
+									.catch((err) => {
+										toast.error(err.message);
+									});
+							}}
+						>
+							<Button variant={isActive ? "destructive" : "default"}>
+								{isActive ? "비활성화" : "활성화"}
+							</Button>
+						</DialogAction>
+					</div>
 
-							{shouldShowWarning && (
-								<AlertBlock type="warning">
-									When you activate, you need to reload traefik to apply the
-									changes, you can reload traefik in{" "}
-									<Link
-										href="/dashboard/settings/server"
-										className="text-primary"
-									>
-										Settings
-									</Link>
-								</AlertBlock>
-							)}
-						</CardHeader>
-						<CardContent className="space-y-2 py-8 border-t">
-							<div className="flex w-full gap-4 justify-end items-center">
-								<div className="flex-1 flex items-center gap-4">
-									<div className="flex items-center gap-2">
-										<Label htmlFor="cron" className="min-w-32">
-											Log Cleanup Schedule
-										</Label>
-										<TooltipProvider>
-											<Tooltip>
-												<TooltipTrigger>
-													<InfoIcon className="size-4 text-muted-foreground" />
-												</TooltipTrigger>
-												<TooltipContent>
-													<p className="max-w-80">
-														At the scheduled time, the cleanup job will keep
-														only the last 1000 entries in the access log file
-														and signal Traefik to reopen its log files. The
-														default schedule is daily at midnight (0 0 * * *).
-													</p>
-												</TooltipContent>
-											</Tooltip>
-										</TooltipProvider>
-									</div>
-									<div className="flex-1 flex gap-4">
-										<Input
-											id="cron"
-											placeholder="0 0 * * *"
-											value={cronExpression || ""}
-											onChange={(e) => setCronExpression(e.target.value)}
-											className="max-w-60"
-											required
-										/>
-										<Button
-											variant="outline"
-											onClick={async () => {
-												if (!cronExpression?.trim()) {
-													toast.error("Please enter a valid cron expression");
-													return;
-												}
-												try {
-													await updateLogCleanup({
-														cronExpression: cronExpression,
-													});
-													toast.success("Log cleanup schedule updated");
-												} catch (error) {
-													toast.error(
-														`Failed to update log cleanup schedule: ${error instanceof Error ? error.message : "Unknown error"}`,
-													);
-												}
-											}}
-										>
-											Update Schedule
-										</Button>
-									</div>
-								</div>
-								<DialogAction
-									title={isActive ? "Deactivate Requests" : "Activate Requests"}
-									description="You will also need to restart Traefik to apply the changes"
-									type={isActive ? "destructive" : "default"}
+					{shouldShowWarning && (
+						<AlertBlock type="warning" className="mt-4">
+							활성화 후에는 변경 사항을 적용하기 위해 Traefik을 다시 로드해야 합니다.{" "}
+							<Link
+								href="/dashboard/settings/server"
+								className="text-primary underline underline-offset-4"
+							>
+								서버 설정
+							</Link>{" "}
+							페이지에서 Traefik을 재시작할 수 있습니다.
+						</AlertBlock>
+					)}
+				</CardHeader>
+				<CardContent className="space-y-6 pt-6 border-t px-0 pb-0">
+					<div className="flex flex-col gap-4 p-4 rounded-lg bg-sidebar/40 border shadow-sm">
+						<div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+							<div className="flex items-center gap-3">
+								<Label htmlFor="cron" className="font-medium shrink-0">
+									로그 정리 스케줄
+								</Label>
+								<TooltipProvider>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<InfoIcon className="size-4 text-muted-foreground cursor-help" />
+										</TooltipTrigger>
+										<TooltipContent>
+											<p className="max-w-80">
+												예약된 시간에 로그 정리 작업이 실행되어 액세스 로그 파일의 최신 1000개 항목만 유지하고 Traefik이 로그 파일을 다시 열도록 신호를 보냅니다. 기본 설정은 매일 자정(0 0 * * *)입니다.
+											</p>
+										</TooltipContent>
+									</Tooltip>
+								</TooltipProvider>
+							</div>
+							<div className="flex flex-1 gap-2 max-w-md">
+								<Input
+									id="cron"
+									placeholder="0 0 * * *"
+									value={cronExpression || ""}
+									onChange={(e) => setCronExpression(e.target.value)}
+									className="font-mono"
+									required
+								/>
+								<Button
+									variant="outline"
 									onClick={async () => {
-										await toggleRequests({ enable: !isActive })
-											.then(() => {
-												refetch();
-												toast.success(
-													`Requests ${isActive ? "deactivated" : "activated"}`,
-												);
-											})
-											.catch((err) => {
-												toast.error(err.message);
+										if (!cronExpression?.trim()) {
+											toast.error("유효한 크론 표현식을 입력하세요");
+											return;
+										}
+										try {
+											await updateLogCleanup({
+												cronExpression: cronExpression,
 											});
+											toast.success("로그 정리 스케줄이 업데이트되었습니다");
+										} catch (error) {
+											toast.error(
+												`스케줄 업데이트 실패: ${error instanceof Error ? error.message : "알 수 없는 오류"}`,
+											);
+										}
 									}}
 								>
-									<Button>{isActive ? "Deactivate" : "Activate"}</Button>
-								</DialogAction>
+									업데이트
+								</Button>
 							</div>
-
-							{isActive ? (
-								<>
-									<div className="flex justify-end mb-4 gap-2">
-										<Button
-											variant="outline"
-											onClick={() => setDateRange(getDefaultDateRange())}
-											className="px-3"
-										>
-											Reset to Last 3 Days
-										</Button>
-										<Popover>
-											<PopoverTrigger asChild>
-												<Button
-													variant="outline"
-													className="w-[300px] justify-start text-left font-normal"
-												>
-													<CalendarIcon className="mr-2 h-4 w-4" />
-													{dateRange.from ? (
-														dateRange.to ? (
-															<>
-																{format(dateRange.from, "LLL dd, y")} -{" "}
-																{format(dateRange.to, "LLL dd, y")}
-															</>
-														) : (
-															format(dateRange.from, "LLL dd, y")
-														)
-													) : (
-														<span>Pick a date range</span>
-													)}
-												</Button>
-											</PopoverTrigger>
-											<PopoverContent className="w-auto p-0" align="end">
-												<Calendar
-													initialFocus
-													mode="range"
-													defaultMonth={dateRange.from}
-													selected={{
-														from: dateRange.from,
-														to: dateRange.to,
-													}}
-													onSelect={(range) => {
-														setDateRange({
-															from: range?.from,
-															to: range?.to,
-														});
-													}}
-													numberOfMonths={2}
-												/>
-											</PopoverContent>
-										</Popover>
-									</div>
-									<RequestDistributionChart dateRange={dateRange} />
-									<RequestsTable dateRange={dateRange} />
-								</>
-							) : (
-								<div className="flex flex-col items-center justify-center py-12 gap-4 text-muted-foreground">
-									<AlertCircle className="size-12 text-muted-foreground/50" />
-									<div className="text-center space-y-2">
-										<h3 className="text-lg font-medium">
-											Requests are not activated
-										</h3>
-										<p className="text-sm max-w-md">
-											Activate requests to see incoming traffic statistics and
-											monitor your application's usage. After activation, you'll
-											need to reload Traefik for the changes to take effect.
-										</p>
-									</div>
-								</div>
-							)}
-						</CardContent>
+						</div>
 					</div>
-				</Card>
+
+					{isActive ? (
+						<div className="space-y-6">
+							<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+								<span className="text-sm font-medium">통계 및 기록</span>
+								<div className="flex items-center gap-2 w-full sm:w-auto">
+									<Button
+										variant="outline"
+										size="sm"
+										onClick={() => setDateRange(getDefaultDateRange())}
+										className="shrink-0"
+									>
+										최근 3일
+									</Button>
+									<Popover>
+										<PopoverTrigger asChild>
+											<Button
+												variant="outline"
+												size="sm"
+												className="w-full sm:w-[280px] justify-start text-left font-normal"
+											>
+												<CalendarIcon className="mr-2 h-4 w-4" />
+												{dateRange.from ? (
+													dateRange.to ? (
+														<>
+															{format(dateRange.from, "yyyy년 MM월 dd일", { locale: ko })} -{" "}
+															{format(dateRange.to, "yyyy년 MM월 dd일", { locale: ko })}
+														</>
+													) : (
+														format(dateRange.from, "yyyy년 MM월 dd일", { locale: ko })
+													)
+												) : (
+													<span>날짜 범위 선택</span>
+												)}
+											</Button>
+										</PopoverTrigger>
+										<PopoverContent className="w-auto p-0" align="end">
+											<Calendar
+												initialFocus
+												mode="range"
+												defaultMonth={dateRange.from}
+												selected={{
+													from: dateRange.from,
+													to: dateRange.to,
+												}}
+												onSelect={(range) => {
+													setDateRange({
+														from: range?.from,
+														to: range?.to,
+													});
+												}}
+												numberOfMonths={2}
+												locale={ko}
+											/>
+										</PopoverContent>
+									</Popover>
+								</div>
+							</div>
+							<RequestDistributionChart dateRange={dateRange} />
+							<RequestsTable dateRange={dateRange} />
+						</div>
+					) : (
+						<div className="flex flex-col items-center justify-center py-20 gap-4 bg-sidebar/5 rounded-lg border border-dashed text-muted-foreground">
+							<AlertCircle className="size-12 text-muted-foreground/30" />
+							<div className="text-center space-y-2">
+								<h3 className="text-lg font-medium">요청 통계가 활성화되지 않았습니다</h3>
+								<p className="text-sm max-w-md mx-auto">
+									요청 활성화를 통해 인입 트래픽 통계를 확인하고 애플리케이션 사용량을 모니터링할 수 있습니다. 활성화 후에는 Traefik을 재시작해야 변경 사항이 적용됩니다.
+								</p>
+							</div>
+							<Button 
+								variant="secondary" 
+								className="mt-2"
+								onClick={async () => {
+									await toggleRequests({ enable: true })
+										.then(() => {
+											refetch();
+											toast.success("요청 통계가 활성화되었습니다");
+										});
+								}}
+							>
+								지금 활성화하기
+							</Button>
+						</div>
+					)}
+				</CardContent>
 			</div>
-		</>
+		</Card>
 	);
 };

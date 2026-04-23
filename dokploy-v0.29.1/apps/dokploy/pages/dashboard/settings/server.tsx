@@ -18,15 +18,11 @@ const Page = () => {
 			<div className="h-full rounded-xl  max-w-5xl mx-auto flex flex-col gap-4">
 				<WebDomain />
 				<WebServer />
-				<div className="w-full flex flex-col gap-4">
-					<Card className="h-full bg-sidebar  p-2.5 rounded-xl  mx-auto w-full">
-						<ShowBackups
-							id={user?.userId ?? ""}
-							databaseType="web-server"
-							backupType="database"
-						/>
-					</Card>
-				</div>
+				<ShowBackups
+					id={user?.userId ?? ""}
+					databaseType="web-server"
+					backupType="database"
+				/>
 			</div>
 		</div>
 	);
@@ -35,7 +31,7 @@ const Page = () => {
 export default Page;
 
 Page.getLayout = (page: ReactElement) => {
-	return <DashboardLayout metaName="Server">{page}</DashboardLayout>;
+	return <DashboardLayout metaName="서버">{page}</DashboardLayout>;
 };
 export async function getServerSideProps(
 	ctx: GetServerSidePropsContext<{ serviceId: string }>,
