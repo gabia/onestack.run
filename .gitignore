@@ -1,0 +1,17 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Claude Code
+.claude/
+.agents/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+
+# Skills
+skills-lock.json
