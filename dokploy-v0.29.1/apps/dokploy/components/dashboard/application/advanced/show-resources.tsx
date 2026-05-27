@@ -193,10 +193,9 @@ export const ShowResources = ({ id, type }: Props) => {
 	return (
 		<Card className="bg-background">
 			<CardHeader>
-				<CardTitle className="text-xl">Resources</CardTitle>
+				<CardTitle className="text-xl">리소스</CardTitle>
 				<CardDescription>
-					If you want to decrease or increase the resources to a specific.
-					application or database
+					특정 애플리케이션 또는 데이터베이스의 리소스를 줄이거나 늘릴 수 있습니다
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-4">

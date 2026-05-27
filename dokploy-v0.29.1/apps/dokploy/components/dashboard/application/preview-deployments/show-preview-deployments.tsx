@@ -78,8 +78,8 @@ export const ShowPreviewDeployments = ({ applicationId }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row items-center justify-between flex-wrap gap-2">
 				<div className="flex flex-col gap-2">
-					<CardTitle className="text-xl">Preview Deployments</CardTitle>
-					<CardDescription>See all the preview deployments</CardDescription>
+					<CardTitle className="text-xl">미리보기 배포</CardTitle>
+					<CardDescription>모든 미리보기 배포를 확인합니다</CardDescription>
 				</div>
 				{data?.isPreviewDeploymentsActive && (
 					<ShowPreviewSettings applicationId={applicationId} />
@@ -300,8 +300,7 @@ export const ShowPreviewDeployments = ({ applicationId }: Props) => {
 					<div className="flex w-full flex-col items-center justify-center gap-3 pt-10">
 						<RocketIcon className="size-8 text-muted-foreground" />
 						<span className="text-base text-muted-foreground">
-							Preview deployments are disabled for this application, please
-							enable it
+							이 애플리케이션의 미리보기 배포가 비활성화되어 있습니다. 활성화해 주세요
 						</span>
 						<ShowPreviewSettings applicationId={applicationId} />
 					</div>

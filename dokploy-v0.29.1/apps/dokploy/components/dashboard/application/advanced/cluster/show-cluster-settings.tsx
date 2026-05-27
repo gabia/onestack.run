@@ -134,9 +134,9 @@ export const ShowClusterSettings = ({ id, type }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row justify-between">
 				<div>
-					<CardTitle className="text-xl">Cluster Settings</CardTitle>
+					<CardTitle className="text-xl">클러스터 설정</CardTitle>
 					<CardDescription>
-						Modify swarm settings for the service.
+						서비스의 스웜 설정을 수정합니다.
 					</CardDescription>
 				</div>
 				<AddSwarmSettings id={id} type={type} />

@@ -33,10 +33,9 @@ export const ShowRedirects = ({ applicationId }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row justify-between flex-wrap gap-4">
 				<div>
-					<CardTitle className="text-xl">Redirects</CardTitle>
+					<CardTitle className="text-xl">리다이렉트</CardTitle>
 					<CardDescription>
-						If you want to redirect requests to this application use the
-						following config to setup the redirects
+						이 애플리케이션으로의 요청을 리다이렉트하려면 다음 설정을 구성하세요
 					</CardDescription>
 				</div>
 

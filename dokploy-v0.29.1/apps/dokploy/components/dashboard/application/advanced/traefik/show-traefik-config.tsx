@@ -32,9 +32,8 @@ export const ShowTraefikConfig = ({ applicationId }: Props) => {
 				<div>
 					<CardTitle className="text-xl">Traefik</CardTitle>
 					<CardDescription>
-						Modify the traefik config, in rare cases you may need to add
-						specific config, be careful because modifying incorrectly can break
-						traefik and your application
+						Traefik 설정을 수정합니다. 드물지만 특정 설정을 추가해야 할 수 있습니다.
+						잘못 수정하면 Traefik과 애플리케이션이 작동하지 않을 수 있으니 주의하세요
 					</CardDescription>
 				</div>
 			</CardHeader>

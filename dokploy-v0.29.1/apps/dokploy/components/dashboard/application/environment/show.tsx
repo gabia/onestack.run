@@ -127,10 +127,10 @@ export const ShowEnvironment = ({ applicationId }: Props) => {
 				>
 					<Secrets
 						name="env"
-						title="Environment Settings"
+						title="환경 변수 설정"
 						description={
 							<span>
-								You can add environment variables to your resource.
+								리소스에 환경 변수를 추가할 수 있습니다.
 								{hasChanges && (
 									<span className="text-yellow-500 ml-2">
 										(You have unsaved changes)

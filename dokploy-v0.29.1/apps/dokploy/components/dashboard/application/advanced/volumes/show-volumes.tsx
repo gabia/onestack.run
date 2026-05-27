@@ -52,10 +52,9 @@ export const ShowVolumes = ({ id, type }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row justify-between flex-wrap gap-4">
 				<div>
-					<CardTitle className="text-xl">Volumes</CardTitle>
+					<CardTitle className="text-xl">볼륨</CardTitle>
 					<CardDescription>
-						If you want to persist data in this service use the following config
-						to setup the volumes
+						이 서비스의 데이터를 영구 저장하려면 다음 설정으로 볼륨을 구성하세요
 					</CardDescription>
 				</div>
 

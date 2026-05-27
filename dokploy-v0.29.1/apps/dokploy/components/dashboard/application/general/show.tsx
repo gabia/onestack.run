@@ -56,7 +56,7 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 		<>
 			<Card className="bg-background">
 				<CardHeader>
-					<CardTitle className="text-xl">Deploy Settings</CardTitle>
+					<CardTitle className="text-xl">배포 설정</CardTitle>
 				</CardHeader>
 				<CardContent className="flex flex-row gap-4 flex-wrap">
 					<TooltipProvider delayDuration={0} disableHoverableContent={false}>

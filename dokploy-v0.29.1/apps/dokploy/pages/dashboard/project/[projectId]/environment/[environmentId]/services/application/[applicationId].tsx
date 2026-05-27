@@ -231,47 +231,47 @@ const Service = (
 								>
 									<div className="flex flex-row items-center justify-between w-full overflow-auto">
 										<TabsList className="flex gap-8 max-md:gap-4 justify-start">
-											<TabsTrigger value="general">General</TabsTrigger>
+											<TabsTrigger value="general">일반</TabsTrigger>
 											{permissions?.envVars.read && (
 												<TabsTrigger value="environment">
-													Environment
+													환경 변수
 												</TabsTrigger>
 											)}
 											{permissions?.domain.read && (
-												<TabsTrigger value="domains">Domains</TabsTrigger>
+												<TabsTrigger value="domains">도메인</TabsTrigger>
 											)}
 											{permissions?.deployment.read && (
 												<TabsTrigger value="deployments">
-													Deployments
+													배포
 												</TabsTrigger>
 											)}
 											{permissions?.deployment.read && (
 												<TabsTrigger value="preview-deployments">
-													Preview Deployments
+													미리보기 배포
 												</TabsTrigger>
 											)}
 											{permissions?.schedule.read && (
-												<TabsTrigger value="schedules">Schedules</TabsTrigger>
+												<TabsTrigger value="schedules">스케줄</TabsTrigger>
 											)}
 											{permissions?.volumeBackup.read && (
 												<TabsTrigger value="volume-backups">
-													Volume Backups
+													볼륨 백업
 												</TabsTrigger>
 											)}
 											{permissions?.logs.read && (
-												<TabsTrigger value="logs">Logs</TabsTrigger>
+												<TabsTrigger value="logs">로그</TabsTrigger>
 											)}
 											{data?.sourceType !== "docker" && (
-												<TabsTrigger value="patches">Patches</TabsTrigger>
+												<TabsTrigger value="patches">패치</TabsTrigger>
 											)}
 											{permissions?.monitoring.read &&
 												((data?.serverId && isCloud) || !data?.server) && (
 													<TabsTrigger value="monitoring">
-														Monitoring
+														모니터링
 													</TabsTrigger>
 												)}
 											{permissions?.service.create && (
-												<TabsTrigger value="advanced">Advanced</TabsTrigger>
+												<TabsTrigger value="advanced">고급</TabsTrigger>
 											)}
 										</TabsList>
 									</div>
