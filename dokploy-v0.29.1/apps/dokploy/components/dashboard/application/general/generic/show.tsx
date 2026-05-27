@@ -214,15 +214,14 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 							<div className="flex flex-col items-center gap-3 min-h-[25vh] justify-center">
 								<GithubIcon className="size-8 text-muted-foreground" />
 								<span className="text-base text-muted-foreground">
-									To deploy using GitHub, you need to configure your account
-									first. Please, go to{" "}
+									GitHub를 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
 										className="text-foreground"
 									>
-										Settings
-									</Link>{" "}
-									to do so.
+										설정
+									</Link>
+									에서 설정해 주세요.
 								</span>
 							</div>
 						)}
@@ -234,15 +233,14 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 							<div className="flex flex-col items-center gap-3 min-h-[25vh] justify-center">
 								<GitlabIcon className="size-8 text-muted-foreground" />
 								<span className="text-base text-muted-foreground">
-									To deploy using GitLab, you need to configure your account
-									first. Please, go to{" "}
+									GitLab을 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
 										className="text-foreground"
 									>
-										Settings
-									</Link>{" "}
-									to do so.
+										설정
+									</Link>
+									에서 설정해 주세요.
 								</span>
 							</div>
 						)}
@@ -254,15 +252,14 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 							<div className="flex flex-col items-center gap-3 min-h-[25vh] justify-center">
 								<BitbucketIcon className="size-8 text-muted-foreground" />
 								<span className="text-base text-muted-foreground">
-									To deploy using Bitbucket, you need to configure your account
-									first. Please, go to{" "}
+									Bitbucket을 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
 										className="text-foreground"
 									>
-										Settings
-									</Link>{" "}
-									to do so.
+										설정
+									</Link>
+									에서 설정해 주세요.
 								</span>
 							</div>
 						)}
@@ -274,15 +271,14 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 							<div className="flex flex-col items-center gap-3 min-h-[25vh] justify-center">
 								<GiteaIcon className="size-8 text-muted-foreground" />
 								<span className="text-base text-muted-foreground">
-									To deploy using Gitea, you need to configure your account
-									first. Please, go to{" "}
+									Gitea를 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
 										className="text-foreground"
 									>
-										Settings
-									</Link>{" "}
-									to do so.
+										설정
+									</Link>
+									에서 설정해 주세요.
 								</span>
 							</div>
 						)}
