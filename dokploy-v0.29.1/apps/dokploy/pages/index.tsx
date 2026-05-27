@@ -188,7 +188,7 @@ export default function Home({ IS_CLOUD }: Props) {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input placeholder="john@example.com" {...field} />
+									<Input placeholder="david@example.com" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -203,7 +203,7 @@ export default function Home({ IS_CLOUD }: Props) {
 								<FormControl>
 									<Input
 										type="password"
-										placeholder="Enter your password"
+										placeholder="비밀번호를 입력하세요"
 										{...field}
 									/>
 								</FormControl>
@@ -236,7 +236,7 @@ export default function Home({ IS_CLOUD }: Props) {
 					</div>
 				</h1>
 				<p className="text-sm text-muted-foreground">
-					Enter your email and password to sign in
+					이메일과 비밀번호를 입력하여 로그인하세요
 				</p>
 			</div>
 			{error && (
@@ -378,7 +378,7 @@ export default function Home({ IS_CLOUD }: Props) {
 								className="hover:underline text-muted-foreground"
 								href="/send-reset-password"
 							>
-								Lost your password?
+								비밀번호를 잊으셨나요?
 							</Link>
 						) : (
 							<Link
@@ -386,7 +386,7 @@ export default function Home({ IS_CLOUD }: Props) {
 								href="https://docs.dokploy.com/docs/core/reset-password"
 								target="_blank"
 							>
-								Lost your password?
+								비밀번호를 잊으셨나요?
 							</Link>
 						)}
 					</div>
