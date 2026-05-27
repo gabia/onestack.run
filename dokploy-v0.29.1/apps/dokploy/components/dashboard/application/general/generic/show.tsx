@@ -76,9 +76,9 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 				<CardHeader>
 					<CardTitle className="flex items-start justify-between">
 						<div className="flex flex-col gap-2">
-							<span className="flex flex-col space-y-0.5">Provider</span>
+							<span className="flex flex-col space-y-0.5">프로바이더</span>
 							<p className="flex items-center text-sm font-normal text-muted-foreground">
-								Select the source of your code
+								코드 소스를 선택하세요
 							</p>
 						</div>
 						<div className="hidden space-y-1 text-sm font-normal md:block">
@@ -110,9 +110,9 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 				<CardHeader>
 					<CardTitle className="flex items-start justify-between">
 						<div className="flex flex-col gap-2">
-							<span className="flex flex-col space-y-0.5">Provider</span>
+							<span className="flex flex-col space-y-0.5">프로바이더</span>
 							<p className="flex items-center text-sm font-normal text-muted-foreground">
-								Repository connection through unauthorized provider
+								인증되지 않은 프로바이더를 통한 저장소 연결
 							</p>
 						</div>
 						<div className="hidden space-y-1 text-sm font-normal md:block">
@@ -135,9 +135,9 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 			<CardHeader>
 				<CardTitle className="flex items-start justify-between">
 					<div className="flex flex-col gap-2">
-						<span className="flex flex-col space-y-0.5">Provider</span>
+						<span className="flex flex-col space-y-0.5">프로바이더</span>
 						<p className="flex items-center text-sm font-normal text-muted-foreground">
-							Select the source of your code
+							코드 소스를 선택하세요
 						</p>
 					</div>
 					<div className="hidden space-y-1 text-sm font-normal md:block">
@@ -217,7 +217,7 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 									GitHub를 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
-										className="text-foreground"
+										className="text-primary"
 									>
 										설정
 									</Link>
@@ -236,7 +236,7 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 									GitLab을 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
-										className="text-foreground"
+										className="text-primary"
 									>
 										설정
 									</Link>
@@ -255,7 +255,7 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 									Bitbucket을 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
-										className="text-foreground"
+										className="text-primary"
 									>
 										설정
 									</Link>
@@ -274,7 +274,7 @@ export const ShowProviderForm = ({ applicationId }: Props) => {
 									Gitea를 사용하여 배포하려면 먼저 계정을 설정해야 합니다.{" "}
 									<Link
 										href="/dashboard/settings/git-providers"
-										className="text-foreground"
+										className="text-primary"
 									>
 										설정
 									</Link>

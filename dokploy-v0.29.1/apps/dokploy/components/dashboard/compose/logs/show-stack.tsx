@@ -85,13 +85,13 @@ export const ShowDockerLogsStack = ({ appName, serverId }: Props) => {
 			<CardHeader>
 				<CardTitle className="text-xl">Logs</CardTitle>
 				<CardDescription>
-					Watch the logs of the application in real time
+					애플리케이션 로그를 실시간으로 확인합니다
 				</CardDescription>
 			</CardHeader>
 
 			<CardContent className="flex flex-col gap-4">
 				<div className="flex flex-row justify-between items-center gap-2">
-					<Label>Select a container to view logs</Label>
+					<Label>로그를 확인할 컨테이너를 선택하세요</Label>
 					<div className="flex flex-row gap-2 items-center">
 						<span className="text-sm text-muted-foreground">
 							{option === "native" ? "Native" : "Swarm"}

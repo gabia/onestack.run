@@ -95,10 +95,9 @@ export const AddCommand = ({ applicationId }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row justify-between">
 				<div>
-					<CardTitle className="text-xl">Run Command</CardTitle>
+					<CardTitle className="text-xl">명령어 실행</CardTitle>
 					<CardDescription>
-						Run a custom command in the container after the application
-						initialized
+						애플리케이션 초기화 후 컨테이너에서 사용자 정의 명령어를 실행합니다
 					</CardDescription>
 				</div>
 			</CardHeader>

@@ -65,7 +65,7 @@ export const AddGithubProvider = () => {
 			<DialogContent className="sm:max-w-2xl ">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
-						Github Provider <GithubIcon className="size-5" />
+						GitHub 연동 <GithubIcon className="size-5" />
 					</DialogTitle>
 				</DialogHeader>
 
@@ -73,14 +73,13 @@ export const AddGithubProvider = () => {
 					<CardContent className="p-0">
 						<div className="flex flex-col ">
 							<p className="text-muted-foreground text-sm">
-								To integrate your GitHub account with our services, you'll need
-								to create and install a GitHub app. This process is
-								straightforward and only takes a few minutes. Click the button
-								below to get started.
+								GitHub 계정을 연동하려면 GitHub 앱을 생성하고 설치해야 합니다.
+								과정은 간단하며 몇 분이면 완료됩니다. 아래 버튼을 클릭하여
+								시작하세요.
 							</p>
 							<div className="mt-4 flex flex-col gap-4">
 								<div className="flex flex-row gap-4">
-									<span>Organization?</span>
+									<span>조직 계정인가요?</span>
 									<Switch
 										checked={isOrganization}
 										onCheckedChange={(checked) => setIsOrganization(checked)}
@@ -90,7 +89,7 @@ export const AddGithubProvider = () => {
 								{isOrganization && (
 									<Input
 										required
-										placeholder="Organization name"
+										placeholder="조직 이름"
 										onChange={(e) => setOrganization(e.target.value)}
 									/>
 								)}
@@ -128,14 +127,14 @@ export const AddGithubProvider = () => {
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										Unsure if you already have an app?
+										이미 앱이 있는지 확인하기
 									</a>
 									<Button
 										disabled={isOrganization && organizationName.length < 1}
 										type="submit"
 										className="self-end"
 									>
-										Create GitHub App
+										GitHub 앱 생성
 									</Button>
 								</div>
 							</form>

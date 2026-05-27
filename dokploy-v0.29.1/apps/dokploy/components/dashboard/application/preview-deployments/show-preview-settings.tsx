@@ -465,8 +465,8 @@ export const ShowPreviewSettings = ({ applicationId }: Props) => {
 											<FormControl>
 												<Secrets
 													name="env"
-													title="Environment Settings"
-													description="You can add environment variables to your resource."
+													title="환경 변수 설정"
+													description="리소스에 환경 변수를 추가할 수 있습니다."
 													placeholder={[
 														"NODE_ENV=production",
 														"PORT=3000",

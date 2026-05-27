@@ -82,11 +82,10 @@ export const ShowVolumeBackups = ({
 				<div className="flex justify-between items-center flex-wrap gap-2">
 					<div className="flex flex-col gap-2">
 						<CardTitle className="text-xl font-bold flex items-center gap-2">
-							Volume Backups
+							볼륨 백업
 						</CardTitle>
 						<CardDescription>
-							Schedule volume backups to run automatically at specified
-							intervals
+							지정된 간격으로 자동 실행되도록 볼륨 백업을 예약합니다
 						</CardDescription>
 					</div>
 					<div className="flex items-center gap-2 flex-wrap">
@@ -236,10 +235,10 @@ export const ShowVolumeBackups = ({
 					<div className="flex flex-col gap-2 items-center justify-center py-12 rounded-lg">
 						<DatabaseBackup className="size-8 mb-4 text-muted-foreground" />
 						<p className="text-lg font-medium text-muted-foreground">
-							No volume backups
+							볼륨 백업이 없습니다
 						</p>
 						<p className="text-sm text-muted-foreground mt-1">
-							Create your first volume backup to automate your workflows
+							첫 번째 볼륨 백업을 생성하여 워크플로우를 자동화하세요
 						</p>
 						<div className="flex items-center gap-2">
 							<HandleVolumeBackups id={id} volumeBackupType={type} />

@@ -133,9 +133,9 @@ export const ShowEnvironment = ({ id, type }: Props) => {
 			<Card className="bg-background">
 				<CardHeader className="flex flex-row w-full items-center justify-between">
 					<div>
-						<CardTitle className="text-xl">Environment Settings</CardTitle>
+						<CardTitle className="text-xl">환경 변수 설정</CardTitle>
 						<CardDescription>
-							You can add environment variables to your resource.
+							리소스에 환경 변수를 추가할 수 있습니다.
 							{hasChanges && (
 								<span className="text-yellow-500 ml-2">
 									(You have unsaved changes)

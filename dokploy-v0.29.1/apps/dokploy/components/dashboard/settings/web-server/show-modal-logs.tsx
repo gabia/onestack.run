@@ -73,7 +73,7 @@ export const ShowModalLogs = ({
 					<DialogDescription>View the logs for {appName}</DialogDescription>
 				</DialogHeader>
 				<div className="flex flex-col gap-4 pt-2.5">
-					<Label>Select a container to view logs</Label>
+					<Label>로그를 확인할 컨테이너를 선택하세요</Label>
 					<Select onValueChange={setContainerId} value={containerId}>
 						<SelectTrigger>
 							{isPending ? (

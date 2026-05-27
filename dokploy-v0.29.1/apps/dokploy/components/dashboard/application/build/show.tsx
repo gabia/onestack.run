@@ -244,9 +244,9 @@ export const ShowBuildChooseForm = ({ applicationId }: Props) => {
 			<CardHeader>
 				<CardTitle className="flex items-start justify-between">
 					<div className="flex flex-col gap-2">
-						<span className="flex flex-col space-y-0.5">Build Type</span>
+						<span className="flex flex-col space-y-0.5">빌드 유형</span>
 						<p className="flex items-center text-sm font-normal text-muted-foreground">
-							Select the way of building your code
+							코드 빌드 방식을 선택하세요
 						</p>
 					</div>
 					<div className="hidden space-y-1 text-sm font-normal md:block">
@@ -257,20 +257,18 @@ export const ShowBuildChooseForm = ({ applicationId }: Props) => {
 			<CardContent>
 				<Form {...form}>
 					<AlertBlock>
-						Builders can consume significant memory and CPU resources
-						(recommended: 4+ GB RAM and 2+ CPU cores). For production
-						environments, please review our{" "}
+						빌더는 상당한 메모리와 CPU 리소스를 사용할 수 있습니다
+						(권장: 4GB 이상 RAM, 2코어 이상 CPU). 프로덕션 환경에서는{" "}
 						<a
 							href="https://docs.dokploy.com/docs/core/applications/going-production"
 							target="_blank"
 							rel="noreferrer"
 							className="font-medium underline underline-offset-4"
 						>
-							Production Guide
-						</a>{" "}
-						for best practices and optimization recommendations. Builders are
-						suitable for development and prototyping purposes when you have
-						sufficient resources available.
+							프로덕션 가이드
+						</a>
+						에서 모범 사례와 최적화 권장 사항을 확인하세요. 빌더는 충분한
+						리소스가 있는 경우 개발 및 프로토타이핑 용도로 적합합니다.
 					</AlertBlock>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
@@ -400,16 +398,15 @@ export const ShowBuildChooseForm = ({ applicationId }: Props) => {
 								render={({ field }) => (
 									<FormItem>
 										<div className="space-y-0.5">
-											<FormLabel>Publish Directory</FormLabel>
+											<FormLabel>배포 디렉토리</FormLabel>
 											<FormDescription>
-												Allows you to serve a single directory via NGINX after
-												the build phase. Useful if the final build assets should
-												be served as a static site.
+												빌드 후 NGINX를 통해 단일 디렉토리를 서빙할 수 있습니다.
+												최종 빌드 결과물을 정적 사이트로 서빙해야 할 때 유용합니다.
 											</FormDescription>
 										</div>
 										<FormControl>
 											<Input
-												placeholder="Publish Directory"
+												placeholder="배포 디렉토리"
 												{...field}
 												value={field.value ?? ""}
 											/>

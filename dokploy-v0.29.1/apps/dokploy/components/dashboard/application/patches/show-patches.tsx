@@ -86,10 +86,9 @@ export const ShowPatches = ({ id, type }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div>
-					<CardTitle>Patches</CardTitle>
+					<CardTitle>패치</CardTitle>
 					<CardDescription>
-						Apply code patches to your repository during build. Patches are
-						applied after cloning the repository and before building.
+						빌드 시 저장소에 코드 패치를 적용합니다. 패치는 저장소 클론 후 빌드 전에 적용됩니다.
 					</CardDescription>
 				</div>
 				{patches && patches?.length > 0 && (
@@ -111,10 +110,10 @@ export const ShowPatches = ({ id, type }: Props) => {
 							<FilePlus2 className="h-10 w-10 text-muted-foreground" />
 						</div>
 						<div className="space-y-1 text-center">
-							<p className="text-sm font-medium">No patches yet</p>
+							<p className="text-sm font-medium">패치가 없습니다</p>
 							<p className="max-w-sm text-sm text-muted-foreground">
-								Add file patches to modify your repo before each build—configs,
-								env, or code. Create your first patch to get started.
+								빌드 전에 설정, 환경 변수, 코드 등을 수정할 파일 패치를 추가하세요.
+								첫 번째 패치를 생성하여 시작하세요.
 							</p>
 						</div>
 						<Button onClick={handleOpenEditor} disabled={isLoadingRepo}>

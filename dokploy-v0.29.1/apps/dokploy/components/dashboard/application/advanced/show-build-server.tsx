@@ -120,9 +120,9 @@ export const ShowBuildServer = ({ applicationId }: Props) => {
 				<div className="flex flex-row items-center gap-2">
 					<Server className="size-6 text-muted-foreground" />
 					<div>
-						<CardTitle className="text-xl">Build Server</CardTitle>
+						<CardTitle className="text-xl">빌드 서버</CardTitle>
 						<CardDescription>
-							Configure a dedicated server for building your application.
+							애플리케이션 빌드를 위한 전용 서버를 설정합니다.
 						</CardDescription>
 					</div>
 				</div>

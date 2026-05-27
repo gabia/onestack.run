@@ -35,8 +35,8 @@ export const ShowSecurity = ({ applicationId }: Props) => {
 		<Card className="bg-background">
 			<CardHeader className="flex flex-row justify-between flex-wrap gap-4">
 				<div>
-					<CardTitle className="text-xl">Security</CardTitle>
-					<CardDescription>Add basic auth to your application</CardDescription>
+					<CardTitle className="text-xl">보안</CardTitle>
+					<CardDescription>애플리케이션에 기본 인증을 추가합니다</CardDescription>
 				</div>
 
 				{data && data?.security.length > 0 && (
