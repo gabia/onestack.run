@@ -62,22 +62,22 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 					<TooltipProvider delayDuration={0} disableHoverableContent={false}>
 						{canDeploy && (
 							<DialogAction
-								title="Deploy Application"
-								description="Are you sure you want to deploy this application?"
+								title="애플리케이션 배포"
+								description="이 애플리케이션을 배포하시겠습니까?"
 								type="default"
 								onClick={async () => {
 									await deploy({
 										applicationId: applicationId,
 									})
 										.then(() => {
-											toast.success("Application deployed successfully");
+											toast.success("애플리케이션이 배포되었습니다");
 											refetch();
 											router.push(
 												`/dashboard/project/${data?.environment.projectId}/environment/${data?.environmentId}/services/application/${applicationId}?tab=deployments`,
 											);
 										})
 										.catch(() => {
-											toast.error("Error deploying application");
+											toast.error("애플리케이션 배포 중 오류가 발생했습니다");
 										});
 								}}
 							>
@@ -90,14 +90,13 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										<TooltipTrigger asChild>
 											<div className="flex items-center">
 												<Rocket className="size-4 mr-1" />
-												Deploy
+												배포
 											</div>
 										</TooltipTrigger>
 										<TooltipPrimitive.Portal>
 											<TooltipContent sideOffset={5} className="z-[60]">
 												<p>
-													Downloads the source code and performs a complete
-													build
+													소스 코드를 다운로드하고 전체 빌드를 수행합니다
 												</p>
 											</TooltipContent>
 										</TooltipPrimitive.Portal>
@@ -107,8 +106,8 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 						)}
 						{canDeploy && (
 							<DialogAction
-								title="Reload Application"
-								description="Are you sure you want to reload this application?"
+								title="애플리케이션 재시작"
+								description="이 애플리케이션을 재시작하시겠습니까?"
 								type="default"
 								onClick={async () => {
 									await reload({
@@ -116,11 +115,11 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										appName: data?.appName || "",
 									})
 										.then(() => {
-											toast.success("Application reloaded successfully");
+											toast.success("애플리케이션이 재시작되었습니다");
 											refetch();
 										})
 										.catch(() => {
-											toast.error("Error reloading application");
+											toast.error("애플리케이션 재시작 중 오류가 발생했습니다");
 										});
 								}}
 							>
@@ -133,12 +132,12 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										<TooltipTrigger asChild>
 											<div className="flex items-center">
 												<RefreshCcw className="size-4 mr-1" />
-												Reload
+												재시작
 											</div>
 										</TooltipTrigger>
 										<TooltipPrimitive.Portal>
 											<TooltipContent sideOffset={5} className="z-[60]">
-												<p>Reload the application without rebuilding it</p>
+												<p>재빌드 없이 애플리케이션을 재시작합니다</p>
 											</TooltipContent>
 										</TooltipPrimitive.Portal>
 									</Tooltip>
@@ -147,19 +146,19 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 						)}
 						{canDeploy && (
 							<DialogAction
-								title="Rebuild Application"
-								description="Are you sure you want to rebuild this application?"
+								title="애플리케이션 재빌드"
+								description="이 애플리케이션을 재빌드하시겠습니까?"
 								type="default"
 								onClick={async () => {
 									await redeploy({
 										applicationId: applicationId,
 									})
 										.then(() => {
-											toast.success("Application rebuilt successfully");
+											toast.success("애플리케이션이 재빌드되었습니다");
 											refetch();
 										})
 										.catch(() => {
-											toast.error("Error rebuilding application");
+											toast.error("애플리케이션 재빌드 중 오류가 발생했습니다");
 										});
 								}}
 							>
@@ -172,14 +171,13 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										<TooltipTrigger asChild>
 											<div className="flex items-center">
 												<Hammer className="size-4 mr-1" />
-												Rebuild
+												재빌드
 											</div>
 										</TooltipTrigger>
 										<TooltipPrimitive.Portal>
 											<TooltipContent sideOffset={5} className="z-[60]">
 												<p>
-													Only rebuilds the application without downloading new
-													code
+													새 코드를 다운로드하지 않고 애플리케이션만 재빌드합니다
 												</p>
 											</TooltipContent>
 										</TooltipPrimitive.Portal>
@@ -190,19 +188,19 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 
 						{canDeploy && data?.applicationStatus === "idle" ? (
 							<DialogAction
-								title="Start Application"
-								description="Are you sure you want to start this application?"
+								title="애플리케이션 시작"
+								description="이 애플리케이션을 시작하시겠습니까?"
 								type="default"
 								onClick={async () => {
 									await start({
 										applicationId: applicationId,
 									})
 										.then(() => {
-											toast.success("Application started successfully");
+											toast.success("애플리케이션이 시작되었습니다");
 											refetch();
 										})
 										.catch(() => {
-											toast.error("Error starting application");
+											toast.error("애플리케이션 시작 중 오류가 발생했습니다");
 										});
 								}}
 							>
@@ -215,14 +213,13 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										<TooltipTrigger asChild>
 											<div className="flex items-center">
 												<CheckCircle2 className="size-4 mr-1" />
-												Start
+												시작
 											</div>
 										</TooltipTrigger>
 										<TooltipPrimitive.Portal>
 											<TooltipContent sideOffset={5} className="z-[60]">
 												<p>
-													Start the application (requires a previous successful
-													build)
+													애플리케이션을 시작합니다 (이전에 성공한 빌드가 필요합니다)
 												</p>
 											</TooltipContent>
 										</TooltipPrimitive.Portal>
@@ -231,18 +228,18 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 							</DialogAction>
 						) : canDeploy ? (
 							<DialogAction
-								title="Stop Application"
-								description="Are you sure you want to stop this application?"
+								title="애플리케이션 중지"
+								description="이 애플리케이션을 중지하시겠습니까?"
 								onClick={async () => {
 									await stop({
 										applicationId: applicationId,
 									})
 										.then(() => {
-											toast.success("Application stopped successfully");
+											toast.success("애플리케이션이 중지되었습니다");
 											refetch();
 										})
 										.catch(() => {
-											toast.error("Error stopping application");
+											toast.error("애플리케이션 중지 중 오류가 발생했습니다");
 										});
 								}}
 							>
@@ -255,12 +252,12 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 										<TooltipTrigger asChild>
 											<div className="flex items-center">
 												<Ban className="size-4 mr-1" />
-												Stop
+												중지
 											</div>
 										</TooltipTrigger>
 										<TooltipPrimitive.Portal>
 											<TooltipContent sideOffset={5} className="z-[60]">
-												<p>Stop the currently running application</p>
+												<p>현재 실행 중인 애플리케이션을 중지합니다</p>
 											</TooltipContent>
 										</TooltipPrimitive.Portal>
 									</Tooltip>
@@ -277,12 +274,12 @@ export const ShowGeneralApplication = ({ applicationId }: Props) => {
 							className="flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-offset-2"
 						>
 							<Terminal className="size-4 mr-1" />
-							Open Terminal
+							터미널 열기
 						</Button>
 					</DockerTerminalModal>
 					{canUpdateService && (
 						<div className="flex flex-row items-center gap-2 rounded-md px-4 py-2 border">
-							<span className="text-sm font-medium">Autodeploy</span>
+							<span className="text-sm font-medium">자동 배포</span>
 							<Switch
 								aria-label="Toggle autodeploy"
 								checked={data?.autoDeploy || false}
