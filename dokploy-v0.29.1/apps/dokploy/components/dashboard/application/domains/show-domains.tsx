@@ -229,9 +229,9 @@ export const ShowDomains = ({ id, type }: Props) => {
 			<Card className="bg-background">
 				<CardHeader className="flex flex-row items-center flex-wrap gap-4 justify-between">
 					<div className="flex flex-col gap-1">
-						<CardTitle className="text-xl">Domains</CardTitle>
+						<CardTitle className="text-xl">도메인</CardTitle>
 						<CardDescription>
-							Domains are used to access to the application
+							애플리케이션에 접근하기 위한 도메인을 설정합니다
 						</CardDescription>
 					</div>
 
@@ -256,7 +256,7 @@ export const ShowDomains = ({ id, type }: Props) => {
 								{canCreateDomain && (
 									<AddDomain id={id} type={type}>
 										<Button>
-											<GlobeIcon className="size-4" /> Add Domain
+											<GlobeIcon className="size-4" /> 도메인 추가
 										</Button>
 									</AddDomain>
 								)}
@@ -276,14 +276,13 @@ export const ShowDomains = ({ id, type }: Props) => {
 						<div className="flex w-full flex-col items-center justify-center gap-3 min-h-[40vh]">
 							<GlobeIcon className="size-8 text-muted-foreground" />
 							<span className="text-base text-muted-foreground">
-								To access the application it is required to set at least 1
-								domain
+								애플리케이션에 접근하려면 최소 1개의 도메인을 설정해야 합니다
 							</span>
 							{canCreateDomain && (
 								<div className="flex flex-row gap-4 flex-wrap">
 									<AddDomain id={id} type={type}>
 										<Button>
-											<GlobeIcon className="size-4" /> Add Domain
+											<GlobeIcon className="size-4" /> 도메인 추가
 										</Button>
 									</AddDomain>
 								</div>

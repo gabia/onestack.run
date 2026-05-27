@@ -30,8 +30,8 @@ const MyApp = ({
 		<>
 			<Head>
 				<link rel="stylesheet" href="https://static.hiworks.com/asp/common/font/pretendard/variable/typography.css" />
-				<link rel="icon" href="/favicon.png" type="image/png" />
-				<title>Dokploy</title>
+				<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+				<title>Onestack</title>
 			</Head>
 			<ThemeProvider
 				attribute="class"

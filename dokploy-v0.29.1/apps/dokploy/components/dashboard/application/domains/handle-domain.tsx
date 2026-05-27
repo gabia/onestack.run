@@ -272,12 +272,12 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 	}, [certificateType, form]);
 
 	const dictionary = {
-		success: domainId ? "Domain Updated" : "Domain Created",
-		error: domainId ? "Error updating the domain" : "Error creating the domain",
-		submit: domainId ? "Update" : "Create",
+		success: domainId ? "도메인이 수정되었습니다" : "도메인이 생성되었습니다",
+		error: domainId ? "도메인 수정 중 오류가 발생했습니다" : "도메인 생성 중 오류가 발생했습니다",
+		submit: domainId ? "수정" : "생성",
 		dialogDescription: domainId
-			? "In this section you can edit a domain"
-			: "In this section you can add domains",
+			? "도메인을 수정할 수 있습니다"
+			: "도메인을 추가할 수 있습니다",
 	};
 
 	const onSubmit = async (data: Domain) => {
@@ -325,7 +325,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-2xl">
 				<DialogHeader>
-					<DialogTitle>Domain</DialogTitle>
+					<DialogTitle>도메인</DialogTitle>
 					<DialogDescription>{dictionary.dialogDescription}</DialogDescription>
 				</DialogHeader>
 				{isError && <AlertBlock type="error">{error?.message}</AlertBlock>}
@@ -534,7 +534,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 													certificate options will not have any effect.
 												</AlertBlock>
 											)}
-											<FormLabel>Host</FormLabel>
+											<FormLabel>호스트</FormLabel>
 											<div className="flex gap-2">
 												<FormControl>
 													<Input placeholder="api.dokploy.com" {...field} />
@@ -584,7 +584,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => {
 										return (
 											<FormItem>
-												<FormLabel>Path</FormLabel>
+												<FormLabel>경로</FormLabel>
 												<FormControl>
 													<Input placeholder={"/"} {...field} />
 												</FormControl>
@@ -600,10 +600,9 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => {
 										return (
 											<FormItem>
-												<FormLabel>Internal Path</FormLabel>
+												<FormLabel>내부 경로</FormLabel>
 												<FormDescription>
-													The path where your application expects to receive
-													requests internally (defaults to "/")
+													애플리케이션이 내부적으로 요청을 수신하는 경로입니다 (기본값: "/")
 												</FormDescription>
 												<FormControl>
 													<Input placeholder={"/"} {...field} />
@@ -620,10 +619,9 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => (
 										<FormItem className="flex flex-row items-center justify-between p-3 border rounded-lg shadow-sm">
 											<div className="space-y-0.5">
-												<FormLabel>Strip Path</FormLabel>
+												<FormLabel>경로 제거</FormLabel>
 												<FormDescription>
-													Remove the external path from the request before
-													forwarding to the application
+													애플리케이션으로 전달하기 전에 요청에서 외부 경로를 제거합니다
 												</FormDescription>
 												<FormMessage />
 											</div>
@@ -643,11 +641,9 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => {
 										return (
 											<FormItem>
-												<FormLabel>Container Port</FormLabel>
+												<FormLabel>컨테이너 포트</FormLabel>
 												<FormDescription>
-													The port where your application is running inside the
-													container (e.g., 3000 for Node.js, 80 for Nginx, 8080
-													for Java)
+													컨테이너 내부에서 애플리케이션이 실행 중인 포트입니다 (예: Node.js 3000, Nginx 80, Java 8080)
 												</FormDescription>
 												<FormControl>
 													<NumberInput placeholder={"3000"} {...field} />
@@ -664,11 +660,11 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => (
 										<FormItem className="flex flex-row items-center justify-between p-3 mt-4 border rounded-lg shadow-sm">
 											<div className="space-y-0.5">
-												<FormLabel>Custom Entrypoint</FormLabel>
+												<FormLabel>사용자 정의 진입점</FormLabel>
 												<FormDescription>
-													Use custom entrypoint for domain
+													도메인에 사용자 정의 진입점을 사용합니다
 													<br />
-													"web" and/or "websecure" is used by default.
+													기본값으로 "web" 및/또는 "websecure"가 사용됩니다.
 												</FormDescription>
 												<FormMessage />
 											</div>
@@ -715,7 +711,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 											<div className="space-y-0.5">
 												<FormLabel>HTTPS</FormLabel>
 												<FormDescription>
-													Automatically provision SSL Certificate.
+													SSL 인증서를 자동으로 발급합니다.
 												</FormDescription>
 												<FormMessage />
 											</div>
@@ -803,7 +799,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 									render={({ field }) => (
 										<FormItem>
 											<div className="flex items-center gap-2">
-												<FormLabel>Middlewares</FormLabel>
+												<FormLabel>미들웨어</FormLabel>
 												<TooltipProvider>
 													<Tooltip>
 														<TooltipTrigger>
@@ -871,7 +867,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 															}
 														}}
 													>
-														Add
+														추가
 													</Button>
 												</div>
 											</FormControl>
