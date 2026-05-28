@@ -29,19 +29,19 @@ export const KillBuild = ({ id, type }: Props) => {
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
 				<Button variant="outline" className="w-fit" isLoading={isPending}>
-					Kill Build
+					빌드 중단
 					<Scissors className="size-4" />
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogHeader>
-					<AlertDialogTitle>Are you sure to kill the build?</AlertDialogTitle>
+					<AlertDialogTitle>빌드를 중단하시겠습니까?</AlertDialogTitle>
 					<AlertDialogDescription>
-						This will kill the build process
+						현재 진행 중인 빌드 프로세스가 중단됩니다.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel>Cancel</AlertDialogCancel>
+					<AlertDialogCancel>취소</AlertDialogCancel>
 					<AlertDialogAction
 						onClick={async () => {
 							await mutateAsync({
@@ -49,14 +49,14 @@ export const KillBuild = ({ id, type }: Props) => {
 								composeId: id || "",
 							})
 								.then(() => {
-									toast.success("Build killed successfully");
+									toast.success("빌드가 중단되었습니다.");
 								})
 								.catch((err) => {
 									toast.error(err.message);
 								});
 						}}
 					>
-						Confirm
+						확인
 					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>

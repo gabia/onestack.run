@@ -30,22 +30,21 @@ export const ClearDeployments = ({ id, type }: Props) => {
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
 				<Button variant="outline" className="w-fit" isLoading={isPending}>
-					Clear deployments
+					배포 기록 삭제
 					<Paintbrush className="size-4" />
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle>
-						Are you sure you want to clear old deployments?
+						이전 배포 기록을 삭제하시겠습니까?
 					</AlertDialogTitle>
 					<AlertDialogDescription>
-						This will delete all old deployment records and logs, keeping only
-						the active deployment (the most recent successful one).
+						현재 활성 배포(가장 최근 성공한 배포)를 제외한 모든 이전 배포 기록과 로그가 삭제됩니다.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel>Cancel</AlertDialogCancel>
+					<AlertDialogCancel>취소</AlertDialogCancel>
 					<AlertDialogAction
 						onClick={async () => {
 							await mutateAsync({
@@ -53,7 +52,7 @@ export const ClearDeployments = ({ id, type }: Props) => {
 								composeId: id || "",
 							})
 								.then(async () => {
-									toast.success("Old deployments cleared successfully");
+									toast.success("이전 배포 기록이 삭제되었습니다.");
 									await utils.deployment.allByType.invalidate({
 										id,
 										type: type as "application" | "compose",
@@ -64,7 +63,7 @@ export const ClearDeployments = ({ id, type }: Props) => {
 								});
 						}}
 					>
-						Confirm
+						확인
 					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
