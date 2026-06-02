@@ -235,9 +235,14 @@ export default function Home({ IS_CLOUD }: Props) {
 						Sign in
 					</div>
 				</h1>
-				<p className="text-sm text-muted-foreground">
-					이메일과 비밀번호를 입력하여 로그인하세요
-				</p>
+				<div className="text-center text-sm leading-relaxed">
+					<p className="mt-2 text-muted-foreground">
+						콘솔 아이디는 하이웍스 메신저의 공개 채널 <span className="font-semibold text-foreground">'OneStack.run 질문&amp;답변'</span>에서 신청하세요.
+					</p>
+					<p className="mt-1 text-xs text-muted-foreground">
+						채널 탐색 방법: '채널' 탭 &gt; + 버튼 &gt; 채널 탐색 메뉴
+					</p>
+				</div>
 			</div>
 			{error && (
 				<AlertBlock type="error" className="my-2">
