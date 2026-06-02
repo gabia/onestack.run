@@ -46,7 +46,7 @@ export const generateRandomDomain = ({
 			? projectName.substring(0, maxProjectNameLength)
 			: projectName;
 
-	return `${truncatedProjectName}-${hash}${slugIp === "" ? "" : `-${slugIp}`}.traefik.me`;
+	return `${truncatedProjectName}-${hash}${slugIp === "" ? "" : `-${slugIp}`}.onestack.run`;
 };
 
 export const generateHash = (length = 8): string => {
