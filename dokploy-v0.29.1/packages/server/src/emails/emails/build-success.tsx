@@ -51,11 +51,11 @@ export const BuildSuccessEmail = ({
 						<Section className="mt-[32px]">
 							<Img
 								src={
-									"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/apps/dokploy/logo.png"
+									"https://console.onestack.run/onestack-logo.png"
 								}
-								width="100"
+								width="50"
 								height="50"
-								alt="Dokploy"
+								alt="Onestack"
 								className="my-0 mx-auto"
 							/>
 						</Section>
