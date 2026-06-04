@@ -377,7 +377,7 @@ export default function Home({ IS_CLOUD }: Props) {
 						)}
 					</div>
 
-					<div className="mt-4 text-sm flex flex-row justify-center gap-2">
+					{/* <div className="mt-4 text-sm flex flex-row justify-center gap-2">
 						{IS_CLOUD ? (
 							<Link
 								className="hover:underline text-muted-foreground"
@@ -394,7 +394,7 @@ export default function Home({ IS_CLOUD }: Props) {
 								비밀번호를 잊으셨나요?
 							</Link>
 						)}
-					</div>
+					</div> */}
 				</div>
 				<div className="p-2" />
 			</CardContent>
