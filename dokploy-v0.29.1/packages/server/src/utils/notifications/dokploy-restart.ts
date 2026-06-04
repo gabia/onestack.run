@@ -106,7 +106,7 @@ export const sendDokployRestartNotifications = async () => {
 						],
 						timestamp: date.toISOString(),
 						footer: {
-							text: "Dokploy Restart Notification",
+							text: "Onestack Restart Notification",
 						},
 					});
 				}
@@ -165,7 +165,7 @@ export const sendDokployRestartNotifications = async () => {
 					await sendMattermostNotification(mattermost, {
 						text: `**✅ Onestack Server Restarted**\n\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}`,
 						channel: mattermost.channel,
-						username: mattermost.username || "Dokploy",
+						username: mattermost.username || "Onestack",
 					});
 				}
 
@@ -173,7 +173,7 @@ export const sendDokployRestartNotifications = async () => {
 					try {
 						await sendCustomNotification(custom, {
 							title: "Onestack Server Restarted",
-							message: "Dokploy server has been restarted successfully",
+							message: "Onestack server has been restarted successfully",
 							timestamp: date.toISOString(),
 							date: date.toLocaleString(),
 							status: "success",
