@@ -182,7 +182,7 @@ export const sendDockerCleanupNotifications = async (
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: "Docker Cleanup",
-					message: "Docker cleanup completed successfully",
+					message: `**✅ Docker Cleanup**\n\n**Message:** ${message}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}`,
 					cleanupMessage: message,
 					timestamp: date.toISOString(),
 					date: date.toLocaleString(),

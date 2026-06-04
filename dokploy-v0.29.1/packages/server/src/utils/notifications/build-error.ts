@@ -275,7 +275,7 @@ ${errorMessage}
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: "Build Error",
-					message: "Build failed with errors",
+					message: `**❌ Build Error**\n\n**Project:** ${projectName}\n**Application:** ${applicationName}\n**Type:** ${applicationType}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}\n\n[View Build Details](${buildLink})`,
 					projectName,
 					applicationName,
 					applicationType,

@@ -372,8 +372,8 @@ export const sendDokployBackupNotifications = async ({
 
 			if (custom) {
 				await sendCustomNotification(custom, {
-					title: `Dokploy Backup ${type === "success" ? "Successful" : "Failed"}`,
-					message: `Dokploy instance backup ${type === "success" ? "completed successfully" : "failed"}`,
+					title: `Onestack Backup ${type === "success" ? "Successful" : "Failed"}`,
+					message: `${type === "success" ? "**✅ Onestack Backup Successful**" : "**❌ Onestack Backup Failed**"}\n\n**Backup Type:** Complete Onestack Instance${backupSize ? `\n**Backup Size:** ${backupSize}` : ""}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}${errorMessage ? `\n\n**Error:**\n${errorMessage}` : ""}`,
 					backupType: "Complete Dokploy Instance",
 					...(backupSize ? { backupSize } : {}),
 					...(type === "error" && errorMessage ? { errorMessage } : {}),

@@ -173,7 +173,7 @@ export const sendDokployRestartNotifications = async () => {
 					try {
 						await sendCustomNotification(custom, {
 							title: "Onestack Server Restarted",
-							message: "Onestack server has been restarted successfully",
+							message: `**✅ Onestack Server Restarted**\n\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}`,
 							timestamp: date.toISOString(),
 							date: date.toLocaleString(),
 							status: "success",

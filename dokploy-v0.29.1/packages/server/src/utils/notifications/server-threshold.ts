@@ -183,7 +183,7 @@ export const sendServerThresholdNotifications = async (
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: `Server ${payload.Type} Alert`,
-					message: payload.Message,
+					message: `**⚠️ Server ${payload.Type} Alert**\n\n**Server Name:** ${payload.ServerName}\n**Type:** ${payload.Type}\n**Current Value:** ${payload.Value.toFixed(2)}%\n**Threshold:** ${payload.Threshold.toFixed(2)}%\n**Message:** ${payload.Message}\n**Time:** ${date.toLocaleString()}`,
 					serverName: payload.ServerName,
 					type: payload.Type,
 					currentValue: payload.Value,

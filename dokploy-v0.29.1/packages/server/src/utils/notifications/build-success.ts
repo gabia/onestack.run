@@ -279,7 +279,7 @@ export const sendBuildSuccessNotifications = async ({
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: "Build Success",
-					message: "Build completed successfully",
+					message: `**✅ Build Success**\n\n**Project:** ${projectName}\n**Application:** ${applicationName}\n**Type:** ${applicationType}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}\n\n[View Build Details](${buildLink})`,
 					projectName,
 					applicationName,
 					applicationType,

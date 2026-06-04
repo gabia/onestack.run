@@ -474,10 +474,7 @@ export const sendVolumeBackupNotifications = async ({
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: `Volume Backup ${type === "success" ? "Successful" : "Failed"}`,
-					message:
-						type === "success"
-							? "Volume backup completed successfully"
-							: "Volume backup failed",
+					message: `${type === "success" ? "**✅ Volume Backup Successful**" : "**❌ Volume Backup Failed**"}\n\n**Project:** ${projectName}\n**Application:** ${applicationName}\n**Volume:** ${volumeName}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}${errorMessage ? `\n\n**Error:**\n${errorMessage}` : ""}`,
 					projectName,
 					applicationName,
 					volumeName,

@@ -293,10 +293,7 @@ export const sendDatabaseBackupNotifications = async ({
 			if (custom) {
 				await sendCustomNotification(custom, {
 					title: `Database Backup ${type === "success" ? "Successful" : "Failed"}`,
-					message:
-						type === "success"
-							? "Database backup completed successfully"
-							: "Database backup failed",
+					message: `${type === "success" ? "**✅ Database Backup Successful**" : "**❌ Database Backup Failed**"}\n\n**Project:** ${projectName}\n**Application:** ${applicationName}\n**Type:** ${databaseType}\n**Database Name:** ${databaseName}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}${errorMessage ? `\n\n**Error:**\n${errorMessage}` : ""}`,
 					projectName,
 					applicationName,
 					databaseType,
