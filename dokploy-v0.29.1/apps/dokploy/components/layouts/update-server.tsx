@@ -73,7 +73,7 @@ export const UpdateServerButton = () => {
 		};
 	}, []);
 
-	return !isCloud && updateData.updateAvailable ? (
+	return false && !isCloud && updateData.updateAvailable ? (
 		<div className="border-t pt-4">
 			<UpdateServer
 				updateData={updateData}
