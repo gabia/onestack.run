@@ -1151,6 +1151,7 @@ export default function Page({ children }: Props) {
 								<UpdateServerButton />
 							</SidebarMenuItem>
 						)}
+						<div className="border-t" />
 						<SidebarMenuItem>
 							<UserNav />
 						</SidebarMenuItem>
