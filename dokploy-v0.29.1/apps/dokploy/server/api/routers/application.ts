@@ -250,6 +250,21 @@ export const applicationRouter = createTRPCRouter({
 			}
 
 			const cleanupOperations = [
+				async () => {
+					if (application.analyticsEnabled) {
+						try {
+							const umami = getUmamiClient();
+							if (application.umamiShareId) {
+								await umami.deleteShare(application.umamiShareId);
+							}
+							if (application.umamiWebsiteId) {
+								await umami.deleteWebsite(application.umamiWebsiteId);
+							}
+						} catch (_) {
+							// Umami cleanup is best-effort
+						}
+					}
+				},
 				async () => await deleteAllMiddlewares(application),
 				async () => await removeDeployments(application),
 				async () =>
