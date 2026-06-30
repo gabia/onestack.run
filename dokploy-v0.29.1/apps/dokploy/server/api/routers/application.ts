@@ -31,6 +31,7 @@ import {
 	writeConfigRemote,
 } from "@dokploy/server";
 import { getUmamiClient } from "@dokploy/server/utils/analytics/umami-client";
+import { UMAMI_BASE_URL } from "@dokploy/server/constants";
 import { db } from "@dokploy/server/db";
 import {
 	addNewService,
@@ -1171,7 +1172,7 @@ export const applicationRouter = createTRPCRouter({
 				});
 			}
 
-			const umamiBaseUrl = process.env.UMAMI_BASE_URL || "";
+			const umamiBaseUrl = UMAMI_BASE_URL;
 			const shareUrl = application.umamiShareId
 				? `${umamiBaseUrl}/share/${application.umamiShareId}`
 				: null;
@@ -1224,7 +1225,14 @@ export const applicationRouter = createTRPCRouter({
 			try {
 				const umami = getUmamiClient();
 				const website = await umami.createWebsite(application.name, domain);
-				const share = await umami.createShare(website.id, application.name);
+
+				let share;
+				try {
+					share = await umami.createShare(website.id, application.name);
+				} catch (shareError) {
+					try { await umami.deleteWebsite(website.id); } catch (_) {}
+					throw shareError;
+				}
 
 				await updateApplicationAnalytics(input.applicationId, {
 					analyticsEnabled: true,
@@ -1255,6 +1263,13 @@ export const applicationRouter = createTRPCRouter({
 				throw new TRPCError({
 					code: "UNAUTHORIZED",
 					message: "You are not authorized to access this application",
+				});
+			}
+
+			if (!application.analyticsEnabled) {
+				throw new TRPCError({
+					code: "BAD_REQUEST",
+					message: "Analytics is not enabled for this application",
 				});
 			}
 

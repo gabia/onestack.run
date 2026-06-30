@@ -48,6 +48,7 @@ export const AnalyticsDashboard = ({
 			<div className="rounded-lg border overflow-hidden">
 				<iframe
 					src={shareUrl}
+					sandbox="allow-scripts allow-same-origin"
 					className="w-full border-0"
 					style={{ height: "800px" }}
 					title="Analytics Dashboard"

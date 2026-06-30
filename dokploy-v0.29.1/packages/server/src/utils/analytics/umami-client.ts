@@ -1,3 +1,5 @@
+import { UMAMI_BASE_URL, UMAMI_ADMIN_USERNAME, UMAMI_ADMIN_PASSWORD } from "../../constants";
+
 interface UmamiWebsite {
 	id: string;
 	name: string;
@@ -18,9 +20,9 @@ export class UmamiClient {
 	private tokenExpiresAt = 0;
 
 	constructor() {
-		this.baseUrl = process.env.UMAMI_BASE_URL || "";
-		this.username = process.env.UMAMI_ADMIN_USERNAME || "admin";
-		this.password = process.env.UMAMI_ADMIN_PASSWORD || "umami";
+		this.baseUrl = UMAMI_BASE_URL;
+		this.username = UMAMI_ADMIN_USERNAME;
+		this.password = UMAMI_ADMIN_PASSWORD;
 	}
 
 	private isConfigured(): boolean {
