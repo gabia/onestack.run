@@ -11,6 +11,10 @@ export const DOKPLOY_DOCKER_PORT = process.env.DOKPLOY_DOCKER_PORT
 	? Number(process.env.DOKPLOY_DOCKER_PORT)
 	: undefined;
 
+export const UMAMI_BASE_URL = process.env.UMAMI_BASE_URL || "";
+export const UMAMI_ADMIN_USERNAME = process.env.UMAMI_ADMIN_USERNAME || "admin";
+export const UMAMI_ADMIN_PASSWORD = process.env.UMAMI_ADMIN_PASSWORD || "";
+
 export const CLEANUP_CRON_JOB = "50 23 * * *";
 
 type DockerSocketCandidate = {
