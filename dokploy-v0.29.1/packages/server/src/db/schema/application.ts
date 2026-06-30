@@ -227,6 +227,10 @@ export const applications = pgTable("application", {
 			onDelete: "set null",
 		},
 	),
+	// Analytics (Umami)
+	analyticsEnabled: boolean("analyticsEnabled").notNull().default(false),
+	umamiWebsiteId: text("umamiWebsiteId"),
+	umamiShareId: text("umamiShareId"),
 });
 
 export const applicationsRelations = relations(
