@@ -24,11 +24,13 @@ import {
 	stopServiceRemote,
 	unzipDrop,
 	updateApplication,
+	updateApplicationAnalytics,
 	updateApplicationStatus,
 	updateDeploymentStatus,
 	writeConfig,
 	writeConfigRemote,
 } from "@dokploy/server";
+import { getUmamiClient } from "@dokploy/server/utils/analytics/umami-client";
 import { db } from "@dokploy/server/db";
 import {
 	addNewService,
@@ -1136,5 +1138,129 @@ export const applicationRouter = createTRPCRouter({
 				input.search,
 				application.serverId,
 			);
+		}),
+
+	getAnalytics: protectedProcedure
+		.input(apiFindOneApplication)
+		.query(async ({ input, ctx }) => {
+			await checkServiceAccess(ctx, input.applicationId, "read");
+			const application = await findApplicationById(input.applicationId);
+
+			if (
+				application.environment.project.organizationId !==
+				ctx.session.activeOrganizationId
+			) {
+				throw new TRPCError({
+					code: "UNAUTHORIZED",
+					message: "You are not authorized to access this application",
+				});
+			}
+
+			const umamiBaseUrl = process.env.UMAMI_BASE_URL || "";
+			const shareUrl = application.umamiShareId
+				? `${umamiBaseUrl}/share/${application.umamiShareId}`
+				: null;
+
+			const trackingScript = application.umamiWebsiteId
+				? `<script defer src="${umamiBaseUrl}/script.js" data-website-id="${application.umamiWebsiteId}"></script>`
+				: null;
+
+			return {
+				enabled: application.analyticsEnabled,
+				umamiWebsiteId: application.umamiWebsiteId,
+				shareUrl,
+				trackingScript,
+			};
+		}),
+
+	enableAnalytics: protectedProcedure
+		.input(apiFindOneApplication)
+		.mutation(async ({ input, ctx }) => {
+			await checkServiceAccess(ctx, input.applicationId, "create");
+			const application = await findApplicationById(input.applicationId);
+
+			if (
+				application.environment.project.organizationId !==
+				ctx.session.activeOrganizationId
+			) {
+				throw new TRPCError({
+					code: "UNAUTHORIZED",
+					message: "You are not authorized to access this application",
+				});
+			}
+
+			if (application.analyticsEnabled) {
+				throw new TRPCError({
+					code: "BAD_REQUEST",
+					message: "Analytics is already enabled for this application",
+				});
+			}
+
+			// Determine the domain to track
+			const domain = application.domains?.[0]?.host;
+			if (!domain) {
+				throw new TRPCError({
+					code: "BAD_REQUEST",
+					message:
+						"도메인을 먼저 설정해주세요. 분석 기능은 도메인이 있는 애플리케이션에서만 사용할 수 있습니다.",
+				});
+			}
+
+			try {
+				const umami = getUmamiClient();
+				const website = await umami.createWebsite(application.name, domain);
+				const share = await umami.createShare(website.id, application.name);
+
+				await updateApplicationAnalytics(input.applicationId, {
+					analyticsEnabled: true,
+					umamiWebsiteId: website.id,
+					umamiShareId: share.id,
+				});
+
+				return { success: true };
+			} catch (error) {
+				throw new TRPCError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "분석 서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.",
+					cause: error,
+				});
+			}
+		}),
+
+	disableAnalytics: protectedProcedure
+		.input(apiFindOneApplication)
+		.mutation(async ({ input, ctx }) => {
+			await checkServiceAccess(ctx, input.applicationId, "create");
+			const application = await findApplicationById(input.applicationId);
+
+			if (
+				application.environment.project.organizationId !==
+				ctx.session.activeOrganizationId
+			) {
+				throw new TRPCError({
+					code: "UNAUTHORIZED",
+					message: "You are not authorized to access this application",
+				});
+			}
+
+			try {
+				const umami = getUmamiClient();
+				if (application.umamiShareId) {
+					await umami.deleteShare(application.umamiShareId);
+				}
+				if (application.umamiWebsiteId) {
+					await umami.deleteWebsite(application.umamiWebsiteId);
+				}
+			} catch (_) {
+				// Umami cleanup is best-effort
+			}
+
+			await updateApplicationAnalytics(input.applicationId, {
+				analyticsEnabled: false,
+				umamiWebsiteId: null,
+				umamiShareId: null,
+			});
+
+			return { success: true };
 		}),
 });
