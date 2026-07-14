@@ -49,7 +49,7 @@ export const domain = z
 	.object({
 		host: z
 			.string()
-			.min(1, { message: "Add a hostname" })
+			.min(1, { message: "도메인을 입력하세요" })
 			.refine((val) => val === val.trim(), {
 				message: "Domain name cannot have leading or trailing spaces",
 			})
