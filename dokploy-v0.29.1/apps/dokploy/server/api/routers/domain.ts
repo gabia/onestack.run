@@ -13,6 +13,7 @@ import {
 	removeDomainById,
 	updateDomainById,
 	validateDomain,
+	checkDomainAvailability,
 } from "@dokploy/server";
 import { checkServicePermissionAndAccess } from "@dokploy/server/services/permission";
 import { TRPCError } from "@trpc/server";
@@ -54,6 +55,9 @@ export const domainRouter = createTRPCRouter({
 				});
 				return domain;
 			} catch (error) {
+				if (error instanceof TRPCError) {
+					throw error;
+				}
 				throw new TRPCError({
 					code: "BAD_REQUEST",
 					message:
@@ -190,6 +194,17 @@ export const domainRouter = createTRPCRouter({
 			}
 
 			return result;
+		}),
+
+	checkAvailability: protectedProcedure
+		.input(
+			z.object({
+				host: z.string().min(1),
+				excludeDomainId: z.string().optional(),
+			}),
+		)
+		.query(async ({ input }) => {
+			return checkDomainAvailability(input.host, input.excludeDomainId);
 		}),
 
 	validateDomain: withPermission("domain", "read")

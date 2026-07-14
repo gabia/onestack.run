@@ -227,6 +227,12 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 	const host = form.watch("host");
 	const isTraefikMeDomain = host?.includes("traefik.me") || false;
 
+	const [hostToCheck, setHostToCheck] = useState("");
+	const { data: availability } = api.domain.checkAvailability.useQuery(
+		{ host: hostToCheck, excludeDomainId: domainId || undefined },
+		{ enabled: hostToCheck.length > 0 },
+	);
+
 	useEffect(() => {
 		if (data) {
 			form.reset({
@@ -314,8 +320,7 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 				setIsOpen(false);
 			})
 			.catch((e) => {
-				console.log(e);
-				toast.error(dictionary.error);
+				toast.error(e?.message || dictionary.error);
 			});
 	};
 	return (
@@ -537,7 +542,17 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 											<FormLabel>호스트</FormLabel>
 											<div className="flex gap-2">
 												<FormControl>
-													<Input placeholder="api.dokploy.com" {...field} />
+													<Input
+														placeholder="api.dokploy.com"
+														{...field}
+														onBlur={(e) => {
+															field.onBlur();
+															const value = e.target.value.trim();
+															if (value) {
+																setHostToCheck(value);
+															}
+														}}
+													/>
 												</FormControl>
 												<TooltipProvider delayDuration={0}>
 													<Tooltip>
@@ -573,6 +588,11 @@ export const AddDomain = ({ id, type, domainId = "", children }: Props) => {
 												</TooltipProvider>
 											</div>
 
+											{availability && !availability.available && hostToCheck === field.value?.trim() && (
+												<p className="text-sm font-medium text-destructive">
+													이 도메인은 이미 다른 서비스에서 사용 중입니다
+												</p>
+											)}
 											<FormMessage />
 										</FormItem>
 									)}

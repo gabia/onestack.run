@@ -5,7 +5,7 @@ import { getWebServerSettings } from "@dokploy/server/services/web-server-settin
 import { generateRandomDomain } from "@dokploy/server/templates";
 import { manageDomain } from "@dokploy/server/utils/traefik/domain";
 import { TRPCError } from "@trpc/server";
-import { eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 import type { z } from "zod";
 import { type apiCreateDomain, domains } from "../db/schema";
 import { findApplicationById } from "./application";
@@ -15,12 +15,23 @@ import { findServerById } from "./server";
 export type Domain = typeof domains.$inferSelect;
 
 export const createDomain = async (input: z.infer<typeof apiCreateDomain>) => {
+	const trimmedHost = input.host?.trim();
+	const existingDomain = await db.query.domains.findFirst({
+		where: eq(domains.host, trimmedHost || ""),
+	});
+	if (existingDomain) {
+		throw new TRPCError({
+			code: "CONFLICT",
+			message: "이 도메인은 이미 다른 서비스에서 사용 중입니다",
+		});
+	}
+
 	const result = await db.transaction(async (tx) => {
 		const domain = await tx
 			.insert(domains)
 			.values({
 				...input,
-				host: input.host?.trim(),
+				host: trimmedHost,
 			} as typeof domains.$inferInsert)
 			.returning()
 			.then((response) => response[0]);
@@ -118,6 +129,22 @@ export const updateDomainById = async (
 	domainId: string,
 	domainData: Partial<Domain>,
 ) => {
+	if (domainData.host) {
+		const trimmedHost = domainData.host.trim();
+		const existingDomain = await db.query.domains.findFirst({
+			where: and(
+				eq(domains.host, trimmedHost),
+				ne(domains.domainId, domainId),
+			),
+		});
+		if (existingDomain) {
+			throw new TRPCError({
+				code: "CONFLICT",
+				message: "이 도메인은 이미 다른 서비스에서 사용 중입니다",
+			});
+		}
+	}
+
 	const domain = await db
 		.update(domains)
 		.set({
@@ -128,6 +155,24 @@ export const updateDomainById = async (
 		.returning();
 
 	return domain[0];
+};
+
+export const checkDomainAvailability = async (
+	host: string,
+	excludeDomainId?: string,
+) => {
+	const trimmedHost = host.trim();
+	const existingDomain = excludeDomainId
+		? await db.query.domains.findFirst({
+				where: and(
+					eq(domains.host, trimmedHost),
+					ne(domains.domainId, excludeDomainId),
+				),
+			})
+		: await db.query.domains.findFirst({
+				where: eq(domains.host, trimmedHost),
+			});
+	return { available: !existingDomain };
 };
 
 export const removeDomainById = async (domainId: string) => {
