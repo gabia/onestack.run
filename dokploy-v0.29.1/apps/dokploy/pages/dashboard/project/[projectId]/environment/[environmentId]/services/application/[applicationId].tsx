@@ -24,7 +24,6 @@ import { ShowVolumes } from "@/components/dashboard/application/advanced/volumes
 import { ShowDeployments } from "@/components/dashboard/application/deployments/show-deployments";
 import { ShowDomains } from "@/components/dashboard/application/domains/show-domains";
 import { ShowEnvironment } from "@/components/dashboard/application/environment/show";
-import { ShowAnalytics } from "@/components/dashboard/application/analytics/show-analytics";
 import { ShowGeneralApplication } from "@/components/dashboard/application/general/show";
 import { ShowIconSettings } from "@/components/dashboard/application/icon/show-icon-settings";
 import { ShowDockerLogs } from "@/components/dashboard/application/logs/show";
@@ -69,8 +68,7 @@ type TabState =
 	| "monitoring"
 	| "preview-deployments"
 	| "volume-backups"
-	| "icon"
-	| "analytics";
+	| "icon";
 
 const Service = (
 	props: InferGetServerSidePropsType<typeof getServerSideProps>,
@@ -272,9 +270,6 @@ const Service = (
 														모니터링
 													</TabsTrigger>
 												)}
-											{permissions?.monitoring.read && (
-												<TabsTrigger value="analytics">분석</TabsTrigger>
-											)}
 											{permissions?.service.create && (
 												<TabsTrigger value="advanced">고급</TabsTrigger>
 											)}
@@ -310,14 +305,6 @@ const Service = (
 														appName={data?.appName || ""}
 													/>
 												)}
-											</div>
-										</TabsContent>
-									)}
-
-									{permissions?.monitoring.read && (
-										<TabsContent value="analytics">
-											<div className="flex flex-col gap-4 pt-2.5">
-												<ShowAnalytics applicationId={applicationId} />
 											</div>
 										</TabsContent>
 									)}

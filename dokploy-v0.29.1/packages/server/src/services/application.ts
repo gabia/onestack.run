@@ -622,20 +622,3 @@ export const getApplicationStats = async (appName: string) => {
 
 	return data;
 };
-
-export const updateApplicationAnalytics = async (
-	applicationId: string,
-	analyticsData: {
-		analyticsEnabled: boolean;
-		umamiWebsiteId: string | null;
-		umamiShareId: string | null;
-	},
-) => {
-	const result = await db
-		.update(applications)
-		.set(analyticsData)
-		.where(eq(applications.applicationId, applicationId))
-		.returning();
-
-	return result[0];
-};
